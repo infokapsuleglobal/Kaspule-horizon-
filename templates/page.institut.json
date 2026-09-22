@@ -1,0 +1,88 @@
+{
+  "sections": {
+    "kap_hero": {
+      "type": "kapsule-banner",
+      "blocks": {
+        "kicker": { "type": "kicker", "settings": { "text": "—— KAPSULE PALAIS" } },
+        "heading": {
+          "type": "heading",
+          "settings": { "text": "<p>Là où la K-Beauty laisse place à la K-Esthétique</p>" }
+        }
+      },
+      "block_order": ["kicker", "heading"],
+      "settings": {
+        "layout": "full",
+        "color_background": "#5A1410",
+        "color_gradient": "#1C1512",
+        "gradient_angle": 100,
+        "padding-block-start": 24,
+        "padding-block-end": 0
+      }
+    },
+    "kap_quote": {
+      "type": "kapsule-quote",
+      "settings": {
+        "quote": "Travailler sur le corps humain, c'est, en fin de compte, toucher à la vie d'une personne.",
+        "attribution": "Jiwon Hong, fondatrice, 34 ans de pratique en Corée",
+        "padding-block-start": 48,
+        "padding-block-end": 12
+      }
+    },
+    "kap_info": {
+      "type": "kapsule-info-grid",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "title": "De la technique au système",
+            "body": "Plutôt que l'intuition, une méthodologie claire — la Méthode de Soin par Suivi Intégré, affinée par plus de 20 000 cas cliniques, fondée sur la compréhension traditionnelle des méridiens et de la circulation."
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "title": "Pourquoi commencer par le visage",
+            "body": "Tensions, teint terne, contours — souvent liés à la circulation et aux tensions du cou et des épaules. Nos soins du visage intègrent ces connexions structurelles."
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "title": "Éducation & pratique mondiale",
+            "body": "Des praticiens formés à cette méthode exercent en Corée, aux États-Unis et aux Émirats Arabes Unis, appliquant la même philosophie du soin structurel."
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "title": "Une expérience sur mesure",
+            "body": "Chaque visite commence par une consultation personnalisée — réalignement, circulation et restauration structurelle, jamais la simple détente."
+          }
+        }
+      },
+      "block_order": ["card_1", "card_2", "card_3", "card_4"],
+      "settings": { "padding-block-start": 12, "padding-block-end": 24 }
+    },
+    "kap_meander": {
+      "type": "kapsule-meander-band",
+      "settings": {
+        "text": "Réalignement — Circulation — Restauration structurelle",
+        "padding-block-start": 24,
+        "padding-block-end": 0
+      }
+    },
+    "kap_contact": {
+      "type": "kapsule-media-card",
+      "settings": {
+        "media_position": "left",
+        "panel_color": "#141210",
+        "panel_title": "Kapsule Palais",
+        "panel_lines": "10 Rue Charles-François Dupuis, 75003 Paris\nMardi au Dimanche — 11h à 20h",
+        "button_label": "Réserver un soin",
+        "padding-block-start": 44,
+        "padding-block-end": 56
+      }
+    }
+  },
+  "order": ["kap_hero", "kap_quote", "kap_info", "kap_meander", "kap_contact"]
+}

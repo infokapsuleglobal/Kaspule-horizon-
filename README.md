@@ -1,3 +1,71 @@
+# Kapsule — built on Shopify Horizon
+
+This theme is [Shopify Horizon](https://github.com/Shopify/horizon) with a Kapsule
+brand layer on top: colours, typography, a recreated logo mark, and a set of
+bespoke `kapsule-*` sections used to reproduce the Kapsule concept-store design
+(hero banners, the meander pattern band, quote block, info grid, image mosaic,
+list rows, and the media + contact-card panel). Everything else — header, footer,
+product/collection pages, cart, search — is stock Horizon, only reskinned via
+`config/settings_data.json` and `snippets/kapsule-overrides.liquid`.
+
+## What's Kapsule-specific
+
+- `config/settings_data.json` — `color_palette` set to the Kapsule palette
+  (cream `#F7F4EE` / ink `#1A1714` / near-black `#141210` for the footer).
+  Every other theme colour (buttons, badges, inputs) derives from this
+  automatically via Horizon's smart-contrast system.
+- `snippets/kapsule-overrides.liquid` — loads Spectral from Google Fonts for
+  headings/accents, and holds all the bespoke component CSS. Rendered at the
+  end of `<head>` in `layout/theme.liquid` so it wins the cascade.
+- `assets/kapsule-monogram.svg`, `kapsule-wordmark.svg`, `kapsule-wordmark-footer.svg`
+  — the interlocking ribbon "K" mark, recreated as SVG (no logo image is set
+  in theme settings, so the header falls back to the shop name — styled with
+  the monogram as a `::before` icon; upload a real logo image in
+  **Theme settings → Logo** to replace it wholesale).
+- `sections/kapsule-*.liquid` — nine new sections: `kapsule-rainbow-bar`,
+  `kapsule-banner` (hero / CTA bar, flexible via blocks), `kapsule-media-card`
+  (image + info-card panel, used for both the dark contact cards and the
+  Notre Vision story rows), `kapsule-feature-cards`, `kapsule-meander-band`,
+  `kapsule-quote`, `kapsule-info-grid`, `kapsule-image-grid`, `kapsule-list-rows`.
+  Each is a normal Shopify section with its own schema — add, remove, or
+  reorder them from the theme editor like any other section.
+- `templates/index.json`, `templates/page.institut.json`,
+  `templates/page.popup.json`, `templates/page.vision.json` — pages built
+  from the sections above.
+
+## Store setup needed after installing this theme
+
+Theme code ships the layout and design; the following are store content and
+have to be set up once in Shopify admin:
+
+1. **Shop name** — set to "Kapsule" in **Settings → General** (used as the
+   header logo text until a real logo image is uploaded).
+2. **Languages** — add French under **Settings → Languages** so the header's
+   built-in FR/EN switcher has something to switch to.
+3. **Navigation menus** (**Content → Menus**), matching the handles already
+   wired into the header/footer:
+   - `main-menu` — Accueil (`/`), Boutique (→ a collection), Institut
+     (→ the Institut page), Pop-up (→ the Pop-up page), Notre vision
+     (→ the Notre vision page).
+   - `footer` — heading "Services" (La Boutique à Paris, L'Institut à Paris,
+     Réserver un soin).
+   - `footer-info` — heading "Informations" (Notre vision, Nous contacter).
+   - `footer-social` — heading "Suivez-nous" (Instagram, TikTok).
+4. **Pages** (**Content → Pages**), each with **Theme template** set as noted:
+   - "Institut" → template `institut`
+   - "Pop-up" → template `popup`
+   - "Notre vision" → template `vision`
+5. **Products & collections** — the homepage bestsellers grid and the
+   Boutique page pull from real store collections/products; add these in
+   **Products** / **Collections** and point the `kap_bestsellers` section's
+   collection setting at the right one.
+6. Any `kapsule-media-card` / `kapsule-image-grid` section left without an
+   uploaded image falls back to a brand-colour gradient placeholder, so the
+   theme looks complete before real photography is added — swap in real
+   images from the theme editor whenever they're ready.
+
+---
+
 # Horizon
 
 [Getting started](#getting-started) |

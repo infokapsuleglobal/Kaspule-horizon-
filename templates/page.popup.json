@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "kap_hero": {
+      "type": "kapsule-banner",
+      "blocks": {
+        "kicker": { "type": "kicker", "settings": { "text": "—— POP-UP STORE" } },
+        "heading": { "type": "heading", "settings": { "text": "<p>L'exclusivité lifestyle</p>" } },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Un espace éphémère dédié à la culture lifestyle coréenne — marques, créateurs émergents et pièces uniques, à travers des sélections exclusives et tournantes.</p>"
+          }
+        }
+      },
+      "block_order": ["kicker", "heading", "text"],
+      "settings": {
+        "layout": "full",
+        "color_background": "#E5006D",
+        "color_gradient": "#2E1A47",
+        "gradient_angle": 100,
+        "padding-block-start": 24,
+        "padding-block-end": 0
+      }
+    },
+    "kap_gallery": {
+      "type": "kapsule-image-grid",
+      "settings": {
+        "color_1": "#E9C9A8",
+        "color_2": "#F2A33C",
+        "color_3": "#12857A",
+        "padding-block-start": 32,
+        "padding-block-end": 0
+      }
+    },
+    "kap_selections": {
+      "type": "kapsule-list-rows",
+      "blocks": {
+        "row_1": { "type": "row", "settings": { "label": "Céramique de Séoul", "meta": "Jusqu'au 12 octobre" } },
+        "row_2": { "type": "row", "settings": { "label": "Studio Textile — édition capsule", "meta": "Nouveau cette semaine" } },
+        "row_3": { "type": "row", "settings": { "label": "Papeterie & objets — jeunes créateurs", "meta": "Permanent" } }
+      },
+      "block_order": ["row_1", "row_2", "row_3"],
+      "settings": { "heading": "Sélections en cours", "padding-block-start": 40, "padding-block-end": 8 }
+    },
+    "kap_contact": {
+      "type": "kapsule-media-card",
+      "settings": {
+        "media_position": "left",
+        "panel_color": "#141210",
+        "panel_title": "Retrouvez-nous",
+        "panel_lines": "10-12 Rue Charles-François Dupuis\n75003 Paris — en plein cœur du Marais",
+        "button_label": "",
+        "padding-block-start": 40,
+        "padding-block-end": 56
+      }
+    }
+  },
+  "order": ["kap_hero", "kap_gallery", "kap_selections", "kap_contact"]
+}

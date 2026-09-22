@@ -1,0 +1,67 @@
+<div
+  class="section section--page-width spacing-style page-width"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="kap-image-grid">
+    <div
+      class="kap-image-grid__tile"
+      style="{% if section.settings.image_main != blank %}background-image: url({{ section.settings.image_main | image_url: width: 1200 }});{% else %}background: linear-gradient(135deg, {{ section.settings.color_1 }}, {{ section.settings.color_2 }});{% endif %} min-block-size: 340px;"
+    ></div>
+    <div class="kap-image-grid__side">
+      <div
+        class="kap-image-grid__tile"
+        style="{% if section.settings.image_2 != blank %}background-image: url({{ section.settings.image_2 | image_url: width: 800 }});{% else %}background: linear-gradient(135deg, {{ section.settings.color_2 }}, {{ section.settings.color_3 }});{% endif %}"
+      ></div>
+      <div
+        class="kap-image-grid__tile"
+        style="{% if section.settings.image_3 != blank %}background-image: url({{ section.settings.image_3 | image_url: width: 800 }});{% else %}background: linear-gradient(135deg, {{ section.settings.color_3 }}, {{ section.settings.color_1 }});{% endif %}"
+      ></div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule image grid",
+  "tag": "section",
+  "class": "section-wrapper",
+  "settings": [
+    { "type": "image_picker", "id": "image_main", "label": "Main image" },
+    { "type": "image_picker", "id": "image_2", "label": "Side image 1" },
+    { "type": "image_picker", "id": "image_3", "label": "Side image 2" },
+    { "type": "color", "id": "color_1", "label": "Placeholder colour 1", "default": "#F2A33C" },
+    { "type": "color", "id": "color_2", "label": "Placeholder colour 2", "default": "#12857A" },
+    { "type": "color", "id": "color_3", "label": "Placeholder colour 3", "default": "#D9D2C4" },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kapsule image grid",
+      "category": "Kapsule"
+    }
+  ]
+}
+{% endschema %}

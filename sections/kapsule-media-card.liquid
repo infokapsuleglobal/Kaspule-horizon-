@@ -1,0 +1,130 @@
+{% liquid
+  assign panel_bg = section.settings.panel_color
+  render 'contrast-override', background_color: panel_bg, section_id: section.id
+%}
+
+<div
+  class="section section--page-width spacing-style page-width"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="kap-media-card{% if section.settings.media_position == 'right' %} kap-media-card--reverse{% endif %}">
+    <div
+      class="kap-media-card__media"
+      {% if section.settings.image != blank %}
+        style="background-image: url({{ section.settings.image | image_url: width: 1200 }});"
+      {% elsif section.settings.media_color_1 != blank %}
+        style="background: linear-gradient(150deg, {{ section.settings.media_color_1 }}, {{ section.settings.media_color_2 | default: section.settings.media_color_1 }});"
+      {% else %}
+        style="background: linear-gradient(160deg, rgb(var(--color-foreground-rgb, 26 23 20) / 0.08), rgb(var(--color-foreground-rgb, 26 23 20) / 0.03));"
+      {% endif %}
+      role="img"
+      {% if section.settings.image.alt != blank %}
+        aria-label="{{ section.settings.image.alt }}"
+      {% endif %}
+    ></div>
+
+    <div class="kap-media-card__panel color-custom-{{ section.id }}">
+      {% if section.settings.panel_kicker != blank %}
+        <span class="kap-feature-card__kicker">{{ section.settings.panel_kicker }}</span>
+      {% endif %}
+      {% if section.settings.panel_title != blank %}
+        <p class="kap-media-card__panel-title">{{ section.settings.panel_title }}</p>
+      {% endif %}
+      {% for line in section.settings.panel_lines | split: newline %}
+        {% if line != blank %}
+          <p class="kap-media-card__panel-line">{{ line | strip }}</p>
+        {% endif %}
+      {% endfor %}
+      {% if section.settings.button_link != blank %}
+        {% if section.settings.button_style == 'link' %}
+          <a href="{{ section.settings.button_link }}" class="kap-media-card__panel-link">
+            {{ section.settings.button_label }}
+          </a>
+        {% else %}
+          <a href="{{ section.settings.button_link }}" class="kap-btn kap-btn--sm" style="align-self: flex-start;">
+            {{ section.settings.button_label }}
+          </a>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule media + card",
+  "tag": "section",
+  "class": "section-wrapper",
+  "settings": [
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Media position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "color", "id": "media_color_1", "label": "Media gradient start (used when no image)" },
+    { "type": "color", "id": "media_color_2", "label": "Media gradient end (used when no image)" },
+    {
+      "type": "color",
+      "id": "panel_color",
+      "label": "Info card colour",
+      "default": "#141210"
+    },
+    { "type": "text", "id": "panel_kicker", "label": "Card kicker", "default": "" },
+    { "type": "text", "id": "panel_title", "label": "Card title", "default": "Kapsule Palais" },
+    {
+      "type": "textarea",
+      "id": "panel_lines",
+      "label": "Card lines (one per line)",
+      "default": "10 Rue Charles-François Dupuis, 75003 Paris\nMardi au Dimanche — 11h à 20h"
+    },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Réserver un soin" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        { "value": "solid", "label": "Solid pill" },
+        { "value": "link", "label": "Underlined link" }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 44
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kapsule media + card",
+      "category": "Kapsule"
+    }
+  ]
+}
+{% endschema %}

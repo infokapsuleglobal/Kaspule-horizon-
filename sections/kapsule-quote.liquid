@@ -1,0 +1,58 @@
+<div
+  class="section section--page-width spacing-style page-width"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <blockquote class="kap-quote">
+    “{{ section.settings.quote }}”
+    {%- if section.settings.attribution != blank -%}
+      <cite class="kap-quote__cite">— {{ section.settings.attribution }}</cite>
+    {%- endif -%}
+  </blockquote>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule quote",
+  "tag": "section",
+  "class": "section-wrapper",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "default": "Travailler sur le corps humain, c'est, en fin de compte, toucher à la vie d'une personne."
+    },
+    { "type": "text", "id": "attribution", "label": "Attribution", "default": "Jiwon Hong, fondatrice, 34 ans de pratique en Corée" },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kapsule quote",
+      "category": "Kapsule"
+    }
+  ]
+}
+{% endschema %}

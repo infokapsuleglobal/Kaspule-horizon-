@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" role="img" aria-label="Kapsule">
+  <path d="M20,12 C24,30 40,50 58,64 C72,75 84,84 93,90" stroke="#5A1410" stroke-width="9" stroke-linecap="round"/>
+  <path d="M32,10 C36,28 52,48 68,62 C80,73 90,82 97,88" stroke="#E5006D" stroke-width="9" stroke-linecap="round"/>
+  <path d="M44,10 C48,26 62,46 76,60 C86,70 93,78 98,84" stroke="#1B2A52" stroke-width="9" stroke-linecap="round"/>
+  <path d="M14,80 C28,68 46,54 60,42 C74,30 84,20 92,12" stroke="#12857A" stroke-width="9" stroke-linecap="round"/>
+  <path d="M26,8 C14,6 7,16 11,26 C14,34 25,36 31,28" stroke="#E9C9A8" stroke-width="9" stroke-linecap="round" fill="none"/>
+</svg>

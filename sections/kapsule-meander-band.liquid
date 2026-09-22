@@ -1,0 +1,56 @@
+<div
+  class="section section--page-width spacing-style page-width"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="kap-meander">
+    <div class="kap-meander__pattern" aria-hidden="true">
+      {% for i in (1..14) %}
+        <div class="kap-meander__glyph"></div>
+      {% endfor %}
+    </div>
+    {% if section.settings.text != blank %}
+      <div class="kap-meander__pill">{{ section.settings.text }}</div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule meander band",
+  "tag": "section",
+  "class": "section-wrapper",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Pill text", "default": "Le soin, le rituel et le style — l'excellence coréenne" },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kapsule meander band",
+      "category": "Kapsule"
+    }
+  ]
+}
+{% endschema %}

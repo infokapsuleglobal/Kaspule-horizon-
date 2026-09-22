@@ -1,0 +1,390 @@
+{%- doc -%}
+  Kapsule brand layer on top of Horizon: display font, bespoke component styles
+  (rainbow rule, meander band, quote, info grid, image grid, list rows, pill
+  buttons) and the logo mark used when no image logo is uploaded.
+{%- enddoc -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap"
+  rel="stylesheet"
+>
+
+{% style %}
+  :root {
+    --font-heading--family: 'Spectral', Georgia, 'Times New Roman', serif;
+    --font-accent--family: 'Spectral', Georgia, 'Times New Roman', serif;
+    --kap-maroon: #5A1410;
+    --kap-maroon-deep: #2A1512;
+    --kap-pink: #E5006D;
+    --kap-navy: #1B2A52;
+    --kap-teal: #12857A;
+    --kap-tan: #E9C9A8;
+    --kap-sage: #8FAE96;
+    --kap-sage-ink: #15211A;
+    --kap-ink: #1A1714;
+    --kap-cream: #F7F4EE;
+  }
+
+  ::selection {
+    background: var(--kap-pink);
+    color: #fff;
+  }
+
+  /* ---------- Header logo mark (used when no image logo is uploaded) ---------- */
+  .header-logo {
+    gap: 9px;
+    font-family: var(--font-heading--family);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  .header-logo::before {
+    content: '';
+    display: block;
+    inline-size: 24px;
+    block-size: 24px;
+    flex: 0 0 auto;
+    background-image: url({{ 'kapsule-monogram.svg' | asset_url }});
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  /* ---------- Rainbow rule ---------- */
+  .kap-rainbow {
+    display: block;
+    inline-size: 100%;
+    block-size: 10px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--kap-pink) 0 26px,
+      var(--kap-navy) 26px 52px,
+      #F2A33C 52px 78px,
+      var(--kap-teal) 78px 104px,
+      #8E2E86 104px 130px,
+      #C7203F 130px 156px
+    );
+  }
+
+  /* ---------- Pill buttons that adapt to whatever section they sit in ---------- */
+  .kap-btn,
+  .kap-btn--outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 999px;
+    padding: 15px 30px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: opacity 0.15s ease;
+  }
+
+  .kap-btn {
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  .kap-btn--outline {
+    background: transparent;
+    color: var(--color-foreground);
+    border-color: rgb(var(--color-foreground-rgb, 26 23 20) / 0.45);
+  }
+
+  .kap-btn:hover,
+  .kap-btn--outline:hover {
+    opacity: 0.82;
+  }
+
+  .kap-btn--sm {
+    padding: 9px 16px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  /* ---------- Kicker pill ---------- */
+  .kap-kicker {
+    display: inline-block;
+    border: 1px solid rgb(var(--color-foreground-rgb, 26 23 20) / 0.35);
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .kap-italic {
+    font-style: italic;
+  }
+
+  /* ---------- Meander band ---------- */
+  .kap-meander {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #8A7A62;
+    min-block-size: 86px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .kap-meander__pattern {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding-inline: 18px;
+    z-index: 0;
+  }
+
+  .kap-meander__glyph {
+    flex: 0 0 auto;
+    inline-size: 44px;
+    block-size: 44px;
+    border: 8px solid #6B5B45;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .kap-meander__glyph::after {
+    content: '';
+    inline-size: 11px;
+    block-size: 11px;
+    background: #6B5B45;
+  }
+
+  .kap-meander__pill {
+    position: relative;
+    z-index: 1;
+    background: rgba(243, 239, 231, 0.94);
+    border-radius: 999px;
+    padding: clamp(5px, 1.1cqw, 8px) clamp(11px, 2.6cqw, 20px);
+    font-family: var(--font-accent--family);
+    font-style: italic;
+    font-size: clamp(10px, 1.85cqw, 14px);
+    color: #33291F;
+    white-space: nowrap;
+  }
+
+  /* ---------- Quote ---------- */
+  .kap-quote {
+    font-family: var(--font-heading--family);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(22px, 3vw, 30px);
+    line-height: 1.35;
+    max-width: 46ch;
+  }
+
+  .kap-quote__cite {
+    display: block;
+    margin-top: 14px;
+    font-family: var(--font-body--family);
+    font-style: normal;
+    font-size: 13px;
+    color: rgb(var(--color-foreground-rgb, 26 23 20) / 0.6);
+  }
+
+  /* ---------- Info grid ---------- */
+  .kap-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: 20px;
+  }
+
+  .kap-info-card {
+    border: 1px solid rgb(var(--color-foreground-rgb, 26 23 20) / 0.12);
+    border-radius: 4px;
+    padding: 26px;
+    background: var(--color-background);
+  }
+
+  .kap-info-card__title {
+    font-family: var(--font-heading--family);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--kap-teal);
+    margin: 0 0 10px;
+  }
+
+  .kap-info-card__body {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgb(var(--color-foreground-rgb, 26 23 20) / 0.82);
+    margin: 0;
+  }
+
+  /* ---------- Image grid (pop-up gallery) ---------- */
+  .kap-image-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 12px;
+  }
+
+  .kap-image-grid__side {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .kap-image-grid__tile {
+    border-radius: 4px;
+    min-block-size: 160px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  @media screen and (max-width: 749px) {
+    .kap-image-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ---------- List rows ---------- */
+  .kap-list-rows {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .kap-list-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding-block: 18px;
+    border-bottom: 1px solid rgb(var(--color-foreground-rgb, 26 23 20) / 0.12);
+  }
+
+  .kap-list-row:first-child {
+    border-top: 1px solid rgb(var(--color-foreground-rgb, 26 23 20) / 0.12);
+  }
+
+  .kap-list-row__label {
+    font-family: var(--font-heading--family);
+    font-style: italic;
+    font-size: 17px;
+  }
+
+  .kap-list-row__meta {
+    font-size: 12.5px;
+    color: rgb(var(--color-foreground-rgb, 26 23 20) / 0.55);
+    white-space: nowrap;
+  }
+
+  /* ---------- Feature cards ---------- */
+  .kap-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+    gap: 1px;
+    background: rgb(var(--color-foreground-rgb, 26 23 20) / 0.1);
+    border: 1px solid rgb(var(--color-foreground-rgb, 26 23 20) / 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .kap-feature-card {
+    background: var(--color-background);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .kap-feature-card__kicker {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground-rgb, 26 23 20) / 0.5);
+  }
+
+  .kap-feature-card__title {
+    font-family: var(--font-heading--family);
+    font-style: italic;
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .kap-feature-card__body {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: rgb(var(--color-foreground-rgb, 26 23 20) / 0.75);
+    margin: 0;
+  }
+
+  .kap-feature-card__link {
+    margin-top: auto;
+    font-size: 12.5px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ---------- Media card (contact / booking panel) ---------- */
+  .kap-media-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .kap-media-card--reverse {
+    direction: rtl;
+  }
+
+  .kap-media-card--reverse > * {
+    direction: ltr;
+  }
+
+  .kap-media-card__media {
+    border-radius: 4px;
+    min-block-size: 260px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .kap-media-card__panel {
+    border-radius: 4px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .kap-media-card__panel-title {
+    font-family: var(--font-heading--family);
+    font-style: italic;
+    font-size: 22px;
+    margin: 0;
+  }
+
+  .kap-media-card__panel-line {
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.85;
+  }
+
+  .kap-media-card__panel-link {
+    align-self: flex-start;
+    font-size: 12.5px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    color: inherit;
+    margin-top: 4px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .kap-media-card {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstyle %}

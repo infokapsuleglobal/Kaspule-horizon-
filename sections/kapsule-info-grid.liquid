@@ -1,0 +1,99 @@
+<div
+  class="section section--page-width spacing-style page-width"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="kap-info-grid">
+    {% for block in section.blocks %}
+      <div class="kap-info-card" {{ block.shopify_attributes }}>
+        <p class="kap-info-card__title">{{ block.settings.title }}</p>
+        <p class="kap-info-card__body">{{ block.settings.body }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule info grid",
+  "tag": "section",
+  "class": "section-wrapper",
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "De la technique au système" },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body",
+          "default": "Plutôt que l'intuition, une méthodologie claire — la Méthode de Soin par Suivi Intégré, affinée par plus de 20 000 cas cliniques."
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kapsule info grid",
+      "category": "Kapsule",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "title": "De la technique au système",
+            "body": "Plutôt que l'intuition, une méthodologie claire — la Méthode de Soin par Suivi Intégré, affinée par plus de 20 000 cas cliniques, fondée sur la compréhension traditionnelle des méridiens et de la circulation."
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "title": "Pourquoi commencer par le visage",
+            "body": "Tensions, teint terne, contours — souvent liés à la circulation et aux tensions du cou et des épaules. Nos soins du visage intègrent ces connexions structurelles."
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "title": "Éducation & pratique mondiale",
+            "body": "Des praticiens formés à cette méthode exercent en Corée, aux États-Unis et aux Émirats Arabes Unis, appliquant la même philosophie du soin structurel."
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "title": "Une expérience sur mesure",
+            "body": "Chaque visite commence par une consultation personnalisée — réalignement, circulation et restauration structurelle, jamais la simple détente."
+          }
+        }
+      },
+      "block_order": ["card_1", "card_2", "card_3", "card_4"]
+    }
+  ]
+}
+{% endschema %}

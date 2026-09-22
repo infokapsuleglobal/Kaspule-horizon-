@@ -1,0 +1,107 @@
+<div
+  class="section section--page-width spacing-style page-width"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="kap-feature-grid">
+    {% for block in section.blocks %}
+      <a
+        href="{{ block.settings.link }}"
+        class="kap-feature-card"
+        {{ block.shopify_attributes }}
+      >
+        <span class="kap-feature-card__kicker">{{ block.settings.kicker }}</span>
+        <p class="kap-feature-card__title">{{ block.settings.title }}</p>
+        <p class="kap-feature-card__body">{{ block.settings.body }}</p>
+        <span class="kap-feature-card__link">{{ block.settings.link_label }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule feature cards",
+  "tag": "section",
+  "class": "section-wrapper",
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "text", "id": "kicker", "label": "Kicker", "default": "01 — KAPSULE PALAIS" },
+        { "type": "text", "id": "title", "label": "Title", "default": "L'Institut" },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body",
+          "default": "La K-Esthétique, portée par l'héritage de Jiwon Hong et sa méthode de récupération structurelle."
+        },
+        { "type": "text", "id": "link_label", "label": "Link label", "default": "Découvrir" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kapsule feature cards",
+      "category": "Kapsule",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "kicker": "01 — KAPSULE PALAIS",
+            "title": "L'Institut",
+            "body": "La K-Esthétique, portée par l'héritage de Jiwon Hong et sa méthode de récupération structurelle.",
+            "link_label": "Découvrir"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "kicker": "02 — L'UNIVERS BOUTIQUE",
+            "title": "La Boutique",
+            "body": "15 maisons de cosmétiques coréennes, choisies pour la noblesse de leurs actifs.",
+            "link_label": "Explorer"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "kicker": "03 — POP-UP STORE",
+            "title": "Le Pop-up",
+            "body": "Une sélection tournante de créateurs émergents et de pièces lifestyle rares.",
+            "link_label": "Visiter"
+          }
+        }
+      },
+      "block_order": ["card_1", "card_2", "card_3"]
+    }
+  ]
+}
+{% endschema %}

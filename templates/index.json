@@ -1,94 +1,87 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
+    "kap_hero": {
+      "type": "kapsule-banner",
       "blocks": {
-        "text_YLPk4p": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<p>Browse our latest products</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "{{ settings.color_palette.background }}",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+        "kicker": { "type": "kicker", "settings": { "text": "MAISON DE SÉLECTION — PARIS" } },
+        "heading": {
+          "type": "heading",
+          "settings": { "text": "<p>Curated &amp; <em>Premium</em> Korean Brands</p>" }
         },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
+        "text": {
+          "type": "text",
           "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-custom",
-            "custom_button_background": "rgba(0, 0, 0, 0)",
-            "custom_button_text": "{{ settings.color_palette.background }}",
-            "custom_button_border": "{{ settings.color_palette.background }}",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
+            "text": "<p>Le pont entre l'élégance parisienne et l'avant-garde coréenne — soin, rituel et style, réunis au cœur du Marais.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": { "label": "Découvrir la sélection", "link": "shopify://collections/all", "style": "solid" }
+        },
+        "side": {
+          "type": "side_panel",
+          "settings": { "caption": "Édition en cours" }
         }
       },
-      "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
-      ],
-      "name": "t:names.hero",
+      "block_order": ["kicker", "heading", "text", "button", "side"],
       "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
+        "layout": "full",
+        "color_background": "#5A1410",
+        "color_gradient": "#1C1512",
+        "gradient_angle": 105,
+        "padding-block-start": 24,
+        "padding-block-end": 0
       }
     },
-    "product_list_fa6P9H": {
+    "kap_features": {
+      "type": "kapsule-feature-cards",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "kicker": "01 — KAPSULE PALAIS",
+            "title": "L'Institut",
+            "body": "La K-Esthétique, portée par l'héritage de Jiwon Hong et sa méthode de récupération structurelle.",
+            "link_label": "Découvrir",
+            "link": "shopify://pages/institut"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "kicker": "02 — L'UNIVERS BOUTIQUE",
+            "title": "La Boutique",
+            "body": "15 maisons de cosmétiques coréennes, choisies pour la noblesse de leurs actifs.",
+            "link_label": "Explorer",
+            "link": "shopify://collections/all"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "kicker": "03 — POP-UP STORE",
+            "title": "Le Pop-up",
+            "body": "Une sélection tournante de créateurs émergents et de pièces lifestyle rares.",
+            "link_label": "Visiter",
+            "link": "shopify://pages/pop-up"
+          }
+        }
+      },
+      "block_order": ["card_1", "card_2", "card_3"],
+      "settings": {
+        "padding-block-start": 24,
+        "padding-block-end": 0
+      }
+    },
+    "kap_meander": {
+      "type": "kapsule-meander-band",
+      "settings": {
+        "text": "Le soin, le rituel et le style — l'excellence coréenne",
+        "padding-block-start": 22,
+        "padding-block-end": 0
+      }
+    },
+    "kap_bestsellers": {
       "type": "product-list",
       "blocks": {
         "static-header": {
@@ -123,16 +116,16 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_list_text_YFtzcL": {
+            "product_list_text": {
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "text": "<h3>Les incontournables de la sélection</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "h4",
-                "font": "var(--font-body--family)",
+                "font": "var(--font-heading--family)",
                 "font_size": "",
                 "line_height": "normal",
                 "letter_spacing": "normal",
@@ -148,11 +141,11 @@
               },
               "blocks": {}
             },
-            "product_list_button_MWeP9V": {
+            "product_list_button": {
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
               "settings": {
-                "label": "View all",
+                "label": "Voir tout",
                 "open_in_new_tab": false,
                 "style_class": "button-unstyled",
                 "width": "fit-content",
@@ -163,10 +156,7 @@
               "blocks": {}
             }
           },
-          "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
-          ]
+          "block_order": ["product_list_text", "product_list_button"]
         },
         "static-product-card": {
           "type": "_product-card",
@@ -184,15 +174,15 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_card_gallery_677WP3": {
+            "product_card_gallery": {
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
-                "image_ratio": "adapt",
+                "image_ratio": "portrait",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
-                "border_radius": 0,
+                "border_radius": 4,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -200,7 +190,7 @@
               },
               "blocks": {}
             },
-            "product_title_YXxMTj": {
+            "product_title": {
               "type": "product-title",
               "name": "t:names.product_title",
               "settings": {
@@ -208,7 +198,7 @@
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "paragraph",
-                "font": "var(--font-body--family)",
+                "font": "var(--font-heading--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
@@ -217,14 +207,14 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "padding-block-start": 4,
+                "padding-block-start": 8,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
               "blocks": {}
             },
-            "price_JQzVV4": {
+            "price": {
               "type": "price",
               "name": "t:names.product_price",
               "settings": {
@@ -239,7 +229,7 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
-                "padding-block-start": 0,
+                "padding-block-start": 4,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
@@ -247,11 +237,7 @@
               "blocks": {}
             }
           },
-          "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
-            "price_JQzVV4"
-          ]
+          "block_order": ["product_card_gallery", "product_title", "price"]
         }
       },
       "name": "t:names.featured_collection",
@@ -263,20 +249,32 @@
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
-        "columns_gap": 8,
+        "columns_gap": 16,
         "rows_gap": 24,
         "icons_style": "arrow",
         "icons_shape": "none",
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
-        "gap": 28,
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "gap": 22,
+        "padding-block-start": 44,
+        "padding-block-end": 0
+      }
+    },
+    "kap_delivery_bar": {
+      "type": "kapsule-banner",
+      "blocks": {
+        "text": { "type": "text", "settings": { "text": "<p>Livraison offerte en France dès 49€ d'achat</p>" } },
+        "button": { "type": "button", "settings": { "label": "En savoir plus", "link": "shopify://pages/notre-vision", "style": "solid" } }
+      },
+      "block_order": ["text", "button"],
+      "settings": {
+        "layout": "bar",
+        "color_background": "#8FAE96",
+        "color_gradient": "",
+        "padding-block-start": 44,
+        "padding-block-end": 56
       }
     }
   },
-  "order": [
-    "hero_jVaWmY",
-    "product_list_fa6P9H"
-  ]
+  "order": ["kap_hero", "kap_features", "kap_meander", "kap_bestsellers", "kap_delivery_bar"]
 }

@@ -1,0 +1,105 @@
+{
+  "sections": {
+    "kap_intro": {
+      "type": "kapsule-banner",
+      "blocks": {
+        "kicker": { "type": "kicker", "settings": { "text": "—— NOTRE VISION" } },
+        "heading": {
+          "type": "heading",
+          "settings": { "text": "<p>Kapsule n'est pas seulement un lieu, c'est une destination.</p>" }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Né de la volonté de redéfinir les standards de l'excellence, Kapsule s'établit au cœur du Marais comme le pont entre l'élégance parisienne et l'avant-garde coréenne — un écosystème autour de trois univers complémentaires : le soin, le rituel et le style.</p>"
+          }
+        }
+      },
+      "block_order": ["kicker", "heading", "text"],
+      "settings": {
+        "layout": "full",
+        "content_align": "center",
+        "color_background": "",
+        "color_gradient": "",
+        "padding-block-start": 32,
+        "padding-block-end": 16
+      }
+    },
+    "kap_row_1": {
+      "type": "kapsule-media-card",
+      "settings": {
+        "media_position": "left",
+        "media_color_1": "#5A1410",
+        "media_color_2": "#1C1512",
+        "panel_color": "#F7F4EE",
+        "panel_kicker": "01 — KAPSULE PALAIS",
+        "panel_title": "Là où la K-Beauty laisse place à la K-Esthétique",
+        "panel_lines": "Notre institut s'appuie sur l'héritage de Jiwon Hong et sa méthode de « récupération structurelle » — trois décennies de pratique et l'étude de milliers de profils cutanés.",
+        "button_label": "Découvrir l'institut",
+        "button_link": "shopify://pages/institut",
+        "button_style": "link",
+        "padding-block-start": 24,
+        "padding-block-end": 24
+      }
+    },
+    "kap_row_2": {
+      "type": "kapsule-media-card",
+      "settings": {
+        "media_position": "right",
+        "media_color_1": "#B7CBB9",
+        "media_color_2": "#8FAE96",
+        "panel_color": "#F7F4EE",
+        "panel_kicker": "02 — L'UNIVERS BOUTIQUE",
+        "panel_title": "Une curation exigeante et pointue",
+        "panel_lines": "15 maisons de cosmétiques prestigieuses, choisies pour la noblesse de leurs actifs — disponibles dans notre écrin physique et sur notre e-shop.",
+        "button_label": "Explorer la boutique",
+        "button_link": "shopify://collections/all",
+        "button_style": "link",
+        "padding-block-start": 24,
+        "padding-block-end": 24
+      }
+    },
+    "kap_row_3": {
+      "type": "kapsule-media-card",
+      "settings": {
+        "media_position": "left",
+        "media_color_1": "#E5006D",
+        "media_color_2": "#2E1A47",
+        "panel_color": "#F7F4EE",
+        "panel_kicker": "03 — LE POP-UP STORE",
+        "panel_title": "L'exclusivité lifestyle",
+        "panel_lines": "Une sélection tournante de créateurs émergents et de pièces rares — un regard sans cesse renouvelé sur la créativité contemporaine de Séoul.",
+        "button_label": "Voir le pop-up",
+        "button_link": "shopify://pages/pop-up",
+        "button_style": "link",
+        "padding-block-start": 24,
+        "padding-block-end": 24
+      }
+    },
+    "kap_cta": {
+      "type": "kapsule-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": { "text": "<p>Partenariats &amp; vision B2B</p>" }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Collaborations esthétiques K-Premium, distribution de marques exclusives et partenariats sur mesure — ouverts aux acteurs du luxe et du lifestyle.</p>"
+          }
+        },
+        "button": { "type": "button", "settings": { "label": "Faire une demande", "link": "shopify://pages/contact", "style": "solid" } }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "layout": "bar",
+        "color_background": "#141210",
+        "color_gradient": "",
+        "padding-block-start": 36,
+        "padding-block-end": 56
+      }
+    }
+  },
+  "order": ["kap_intro", "kap_row_1", "kap_row_2", "kap_row_3", "kap_cta"]
+}
