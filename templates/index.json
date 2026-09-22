@@ -9,86 +9,473 @@
  */
 {
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
+    "hero": {
+      "type": "section",
       "blocks": {
-        "text_YLPk4p": {
+        "kicker": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>K-Beauty · Le Marais</p>",
+            "width": "fit-content",
+            "type_preset": "custom",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.6875rem",
+            "letter_spacing": "0.18em",
+            "case": "uppercase",
+            "text_color": "#F3E7DC",
+            "background": true,
+            "background_color": "#ffffff26",
+            "corner_radius": 100,
+            "padding-block-start": 7,
+            "padding-block-end": 7,
+            "padding-inline-start": 16,
+            "padding-inline-end": 16
+          },
+          "blocks": {}
+        },
+        "heading": {
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
-            "width": "fit-content",
+            "text": "<p>Le Marais, réinventé.<br><em>K-beauty</em>, révélée.</p>",
+            "width": "100%",
             "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
+            "type_preset": "h1",
+            "text_color": "#FBF6F0",
+            "wrap": "pretty",
+            "padding-block-start": 20
+          },
+          "blocks": {}
+        },
+        "subtext": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>Une sélection exigeante de soins coréens, un diagnostic de peau sur mesure et un institut au cœur de Paris.</p>",
+            "width": "100%",
+            "max_width": "narrow",
+            "type_preset": "paragraph",
+            "text_color": "#FBF6F0CC",
+            "padding-block-start": 16
+          },
+          "blocks": {}
+        },
+        "cta_row": {
+          "type": "group",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "gap": 12,
+            "width": "fit-content",
+            "height": "fit",
+            "background_media": "none",
+            "border": "none",
+            "padding-block-start": 26,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "shop_btn": {
+              "type": "button",
+              "settings": {
+                "label": "Découvrir la boutique",
+                "link": "shopify://collections/all",
+                "style_class": "button-custom",
+                "custom_button_background": "#FBF6F0",
+                "custom_button_text": "#5A1410",
+                "custom_button_border": "#FBF6F0",
+                "width": "fit-content"
+              },
+              "blocks": {}
+            },
+            "quiz_btn": {
+              "type": "button",
+              "settings": {
+                "label": "Faire le diagnostic",
+                "link": "/pages/diagnostic-de-peau",
+                "style_class": "button-custom",
+                "custom_button_background": "#ffffff00",
+                "custom_button_text": "#FBF6F0",
+                "custom_button_border": "#FBF6F073",
+                "width": "fit-content"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["shop_btn", "quiz_btn"]
+        },
+        "trust": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>Livraison en 24–48h à Paris · Retours sous 30 jours</p>",
+            "width": "100%",
+            "type_preset": "custom",
             "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
+            "font_size": "0.75rem",
+            "text_color": "#FBF6F09E",
+            "padding-block-start": 30
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": ["kicker", "heading", "subtext", "cta_row", "trust"],
+      "name": "t:names.section",
+      "settings": {
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 0,
+        "section_width": "page-width",
+        "section_height": "medium",
+        "background_media": "none",
+        "background_color": "#4A1712",
+        "border": "none",
+        "border_radius": 8,
+        "padding-block-start": 64,
+        "padding-block-end": 64
+      }
+    },
+    "marquee_band": {
+      "type": "marquee",
+      "blocks": {
+        "quote": {
+          "type": "text",
+          "settings": {
+            "text": "<p>—  L'essentiel du soin coréen, sans le superflu  —  Diagnostic de peau offert en institut  —  Livraison offerte dès 45€  —</p>",
+            "type_preset": "custom",
+            "font": "var(--font-accent--family)",
+            "font_size": "1.05rem",
             "letter_spacing": "normal",
             "case": "none",
-            "wrap": "pretty",
-            "text_color": "{{ settings.color_palette.background }}",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
+            "wrap": "nowrap",
+            "width": "fit-content",
+            "text_color": "#F7F4EE"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": ["quote"],
+      "name": "t:names.marquee",
+      "settings": {
+        "movement_direction": "normal",
+        "background_color": "#8A7A62",
+        "padding-block-start": 16,
+        "padding-block-end": 16,
+        "gap_between_elements": 28
+      }
+    },
+    "concern_tiles": {
+      "type": "section",
+      "blocks": {
+        "header": {
+          "type": "group",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "gap": 16,
+            "width": "fill",
+            "height": "fit",
+            "background_media": "none",
+            "border": "none",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
-          "blocks": {}
-        },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
-          "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-custom",
-            "custom_button_background": "rgba(0, 0, 0, 0)",
-            "custom_button_text": "{{ settings.color_palette.background }}",
-            "custom_button_border": "{{ settings.color_palette.background }}",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
+          "blocks": {
+            "title": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Votre rituel, par besoin</h2>",
+                "type_preset": "h2",
+                "width": "fit-content"
+              },
+              "blocks": {}
+            },
+            "subtitle": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p>Sélection curatée selon votre diagnostic de peau</p>",
+                "type_preset": "paragraph",
+                "font_size": "0.8125rem",
+                "text_color": "#8A8178",
+                "width": "fit-content"
+              },
+              "blocks": {}
+            }
           },
-          "blocks": {}
+          "block_order": ["title", "subtitle"]
+        },
+        "tiles": {
+          "type": "group",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "flex-start",
+            "gap": 12,
+            "width": "fill",
+            "height": "fit",
+            "background_media": "none",
+            "border": "none",
+            "padding-block-start": 22,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "tile_eclat": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_alignment_flex_direction_column": "space-between",
+                "gap": 30,
+                "width": "fill",
+                "height": "fit",
+                "background_media": "none",
+                "background_color": "#F2DDE6",
+                "border": "none",
+                "border_radius": 4,
+                "link": "/collections/concern-eclat",
+                "padding-block-start": 18,
+                "padding-block-end": 18,
+                "padding-inline-start": 18,
+                "padding-inline-end": 18
+              },
+              "blocks": {
+                "label": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Éclat</p>",
+                    "type_preset": "custom",
+                    "font": "var(--font-accent--family)",
+                    "font_size": "1.2rem",
+                    "text_color": "#1A1714"
+                  },
+                  "blocks": {}
+                },
+                "cta": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Découvrir</p>",
+                    "type_preset": "custom",
+                    "font_size": "0.6875rem",
+                    "letter_spacing": "0.1em",
+                    "case": "uppercase",
+                    "text_color": "#6A625B"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": ["label", "cta"]
+            },
+            "tile_hydratation": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_alignment_flex_direction_column": "space-between",
+                "gap": 30,
+                "width": "fill",
+                "height": "fit",
+                "background_media": "none",
+                "background_color": "#DDE9DF",
+                "border": "none",
+                "border_radius": 4,
+                "link": "/collections/concern-hydratation",
+                "padding-block-start": 18,
+                "padding-block-end": 18,
+                "padding-inline-start": 18,
+                "padding-inline-end": 18
+              },
+              "blocks": {
+                "label": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Hydratation</p>",
+                    "type_preset": "custom",
+                    "font": "var(--font-accent--family)",
+                    "font_size": "1.2rem",
+                    "text_color": "#1A1714"
+                  },
+                  "blocks": {}
+                },
+                "cta": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Découvrir</p>",
+                    "type_preset": "custom",
+                    "font_size": "0.6875rem",
+                    "letter_spacing": "0.1em",
+                    "case": "uppercase",
+                    "text_color": "#6A625B"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": ["label", "cta"]
+            },
+            "tile_sensible": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_alignment_flex_direction_column": "space-between",
+                "gap": 30,
+                "width": "fill",
+                "height": "fit",
+                "background_media": "none",
+                "background_color": "#D9E8EE",
+                "border": "none",
+                "border_radius": 4,
+                "link": "/collections/concern-peaux-sensibles",
+                "padding-block-start": 18,
+                "padding-block-end": 18,
+                "padding-inline-start": 18,
+                "padding-inline-end": 18
+              },
+              "blocks": {
+                "label": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Peaux sensibles</p>",
+                    "type_preset": "custom",
+                    "font": "var(--font-accent--family)",
+                    "font_size": "1.2rem",
+                    "text_color": "#1A1714"
+                  },
+                  "blocks": {}
+                },
+                "cta": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Découvrir</p>",
+                    "type_preset": "custom",
+                    "font_size": "0.6875rem",
+                    "letter_spacing": "0.1em",
+                    "case": "uppercase",
+                    "text_color": "#6A625B"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": ["label", "cta"]
+            },
+            "tile_age": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_alignment_flex_direction_column": "space-between",
+                "gap": 30,
+                "width": "fill",
+                "height": "fit",
+                "background_media": "none",
+                "background_color": "#EAE1CE",
+                "border": "none",
+                "border_radius": 4,
+                "link": "/collections/concern-anti-age",
+                "padding-block-start": 18,
+                "padding-block-end": 18,
+                "padding-inline-start": 18,
+                "padding-inline-end": 18
+              },
+              "blocks": {
+                "label": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Anti-âge</p>",
+                    "type_preset": "custom",
+                    "font": "var(--font-accent--family)",
+                    "font_size": "1.2rem",
+                    "text_color": "#1A1714"
+                  },
+                  "blocks": {}
+                },
+                "cta": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Découvrir</p>",
+                    "type_preset": "custom",
+                    "font_size": "0.6875rem",
+                    "letter_spacing": "0.1em",
+                    "case": "uppercase",
+                    "text_color": "#6A625B"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": ["label", "cta"]
+            },
+            "tile_rougeurs": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_alignment_flex_direction_column": "space-between",
+                "gap": 30,
+                "width": "fill",
+                "height": "fit",
+                "background_media": "none",
+                "background_color": "#EFD9E2",
+                "border": "none",
+                "border_radius": 4,
+                "link": "/collections/concern-rougeurs",
+                "padding-block-start": 18,
+                "padding-block-end": 18,
+                "padding-inline-start": 18,
+                "padding-inline-end": 18
+              },
+              "blocks": {
+                "label": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Rougeurs</p>",
+                    "type_preset": "custom",
+                    "font": "var(--font-accent--family)",
+                    "font_size": "1.2rem",
+                    "text_color": "#1A1714"
+                  },
+                  "blocks": {}
+                },
+                "cta": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Découvrir</p>",
+                    "type_preset": "custom",
+                    "font_size": "0.6875rem",
+                    "letter_spacing": "0.1em",
+                    "case": "uppercase",
+                    "text_color": "#6A625B"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": ["label", "cta"]
+            }
+          },
+          "block_order": ["tile_eclat", "tile_hydratation", "tile_sensible", "tile_age", "tile_rougeurs"]
         }
       },
-      "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
-      ],
-      "name": "t:names.hero",
+      "block_order": ["header", "tiles"],
+      "name": "t:names.section",
       "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "link": "",
-        "open_in_new_tab": false,
         "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
+        "gap": 0,
         "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
+        "background_media": "none",
+        "border": "none",
+        "padding-block-start": 48,
+        "padding-block-end": 8
       }
     },
-    "product_list_fa6P9H": {
+    "bestsellers": {
       "type": "product-list",
       "blocks": {
         "static-header": {
@@ -123,16 +510,16 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_list_text_YFtzcL": {
+            "title": {
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "text": "<h2>Les incontournables</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
+                "type_preset": "h2",
+                "font": "var(--font-heading--family)",
                 "font_size": "",
                 "line_height": "normal",
                 "letter_spacing": "normal",
@@ -148,11 +535,11 @@
               },
               "blocks": {}
             },
-            "product_list_button_MWeP9V": {
+            "view_all": {
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
               "settings": {
-                "label": "View all",
+                "label": "Tout voir",
                 "open_in_new_tab": false,
                 "style_class": "button-unstyled",
                 "width": "fit-content",
@@ -163,32 +550,29 @@
               "blocks": {}
             }
           },
-          "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
-          ]
+          "block_order": ["title", "view_all"]
         },
         "static-product-card": {
           "type": "_product-card",
           "name": "t:names.product_card",
           "static": true,
           "settings": {
-            "product_card_gap": 4,
-            "border": "none",
+            "product_card_gap": 6,
+            "border": "solid",
             "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
+            "border_opacity": 12,
+            "border_radius": 4,
             "padding-block-start": 0,
-            "padding-block-end": 0,
+            "padding-block-end": 12,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_card_gallery_677WP3": {
+            "gallery": {
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
-                "image_ratio": "adapt",
+                "image_ratio": "portrait",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -200,16 +584,16 @@
               },
               "blocks": {}
             },
-            "product_title_YXxMTj": {
+            "title": {
               "type": "product-title",
               "name": "t:names.product_title",
               "settings": {
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "paragraph",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
+                "type_preset": "custom",
+                "font": "var(--font-accent--family)",
+                "font_size": "0.95rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -217,14 +601,14 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "padding-block-start": 4,
+                "padding-block-start": 10,
                 "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "padding-inline-start": 10,
+                "padding-inline-end": 10
               },
               "blocks": {}
             },
-            "price_JQzVV4": {
+            "price": {
               "type": "price",
               "name": "t:names.product_price",
               "settings": {
@@ -235,35 +619,31 @@
                 "width": "100%",
                 "alignment": "left",
                 "font": "var(--font-body--family)",
-                "font_size": "1rem",
+                "font_size": "0.875rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
-                "padding-block-start": 0,
+                "padding-block-start": 4,
                 "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "padding-inline-start": 10,
+                "padding-inline-end": 10
               },
               "blocks": {}
             }
           },
-          "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
-            "price_JQzVV4"
-          ]
+          "block_order": ["gallery", "title", "price"]
         }
       },
       "name": "t:names.featured_collection",
       "settings": {
-        "collection": "all",
+        "collection": "bestsellers",
         "layout_type": "grid",
-        "carousel_on_mobile": false,
+        "carousel_on_mobile": true,
         "max_products": 8,
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
-        "columns_gap": 8,
+        "columns_gap": 16,
         "rows_gap": 24,
         "icons_style": "arrow",
         "icons_shape": "none",
@@ -271,12 +651,309 @@
         "horizontal_alignment": "flex-start",
         "gap": 28,
         "padding-block-start": 48,
+        "padding-block-end": 12
+      }
+    },
+    "maisons": {
+      "type": "section",
+      "blocks": {
+        "kicker": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Nos maisons</p>",
+            "width": "100%",
+            "alignment": "center",
+            "type_preset": "custom",
+            "font_size": "0.625rem",
+            "letter_spacing": "0.16em",
+            "case": "uppercase",
+            "text_color": "#9A9189"
+          },
+          "blocks": {}
+        },
+        "brand_row": {
+          "type": "group",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "center",
+            "vertical_alignment": "center",
+            "gap": 34,
+            "width": "fill",
+            "height": "fit",
+            "background_media": "none",
+            "border": "none",
+            "padding-block-start": 18,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "b1": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Mixsoon</p>",
+                "type_preset": "custom",
+                "font": "var(--font-accent--family)",
+                "font_size": "1.2rem",
+                "text_color": "#4A443E",
+                "width": "fit-content"
+              },
+              "blocks": {}
+            },
+            "b2": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Urang</p>",
+                "type_preset": "custom",
+                "font": "var(--font-accent--family)",
+                "font_size": "1.2rem",
+                "text_color": "#4A443E",
+                "width": "fit-content"
+              },
+              "blocks": {}
+            },
+            "b3": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Zisu'C</p>",
+                "type_preset": "custom",
+                "font": "var(--font-accent--family)",
+                "font_size": "1.2rem",
+                "text_color": "#4A443E",
+                "width": "fit-content"
+              },
+              "blocks": {}
+            },
+            "b4": {
+              "type": "text",
+              "settings": {
+                "text": "<p>VT Cosmetics</p>",
+                "type_preset": "custom",
+                "font": "var(--font-accent--family)",
+                "font_size": "1.2rem",
+                "text_color": "#4A443E",
+                "width": "fit-content"
+              },
+              "blocks": {}
+            },
+            "b5": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Glash</p>",
+                "type_preset": "custom",
+                "font": "var(--font-accent--family)",
+                "font_size": "1.2rem",
+                "text_color": "#4A443E",
+                "width": "fit-content"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["b1", "b2", "b3", "b4", "b5"]
+        }
+      },
+      "block_order": ["kicker", "brand_row"],
+      "name": "t:names.section",
+      "settings": {
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "gap": 0,
+        "section_width": "page-width",
+        "background_media": "none",
+        "background_color": "#FCFAF6",
+        "border": "solid",
+        "border_width": 1,
+        "border_opacity": 10,
+        "border_color": "#1A1714",
+        "border_radius": 4,
+        "padding-block-start": 26,
+        "padding-block-end": 26
+      }
+    },
+    "institut": {
+      "type": "media-with-content",
+      "blocks": {
+        "media": {
+          "type": "_media-without-appearance",
+          "static": true,
+          "settings": {}
+        },
+        "content": {
+          "type": "_content-without-appearance",
+          "static": true,
+          "settings": {
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center"
+          },
+          "blocks": {
+            "kicker": {
+              "type": "text",
+              "settings": {
+                "text": "<p>01 — Kapsule Palais</p>",
+                "type_preset": "custom",
+                "font_size": "0.6875rem",
+                "letter_spacing": "0.16em",
+                "case": "uppercase",
+                "text_color": "#FBF6F0B3"
+              }
+            },
+            "group": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "height": "fit",
+                "gap": 14,
+                "padding-block-start": 12,
+                "padding-block-end": 20
+              },
+              "blocks": {
+                "heading": {
+                  "type": "text",
+                  "name": "t:names.heading",
+                  "settings": {
+                    "text": "<h2>Un institut pensé comme un rituel</h2>",
+                    "type_preset": "h2",
+                    "text_color": "#FBF6F0"
+                  }
+                },
+                "body": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Diagnostics de peau, soins signature et rituels sur-mesure, au cœur du Marais. Réservez votre moment Kapsule.</p>",
+                    "type_preset": "paragraph",
+                    "max_width": "narrow",
+                    "text_color": "#FBF6F0BF"
+                  }
+                }
+              },
+              "block_order": ["heading", "body"]
+            },
+            "button": {
+              "type": "button",
+              "settings": {
+                "label": "Réserver un soin",
+                "link": "/pages/kapsule-palais",
+                "style_class": "button-custom",
+                "custom_button_background": "#8FAE96",
+                "custom_button_text": "#15211A",
+                "custom_button_border": "#8FAE96"
+              }
+            }
+          },
+          "block_order": ["kicker", "group", "button"]
+        }
+      },
+      "block_order": ["media", "content"],
+      "name": "t:names.editorial",
+      "settings": {
+        "media_position": "right",
+        "media_width": "medium",
+        "media_height": "medium",
+        "section_width": "page-width",
+        "background_color": "#2A1512",
+        "padding-block-start": 48,
         "padding-block-end": 48
+      }
+    },
+    "newsletter": {
+      "type": "section",
+      "blocks": {
+        "copy": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "height": "fit",
+            "gap": 10,
+            "width": "fill",
+            "background_media": "none",
+            "border": "none",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "heading": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>La lettre Kapsule</p>",
+                "type_preset": "custom",
+                "font": "var(--font-accent--family)",
+                "font_size": "1.6rem",
+                "text_color": "#15211A"
+              },
+              "blocks": {}
+            },
+            "body": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Nouveautés, conseils skincare coréen et invitations à l'institut — une fois par mois.</p>",
+                "type_preset": "paragraph",
+                "max_width": "narrow",
+                "text_color": "#1E2E24"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["heading", "body"]
+        },
+        "signup": {
+          "type": "email-signup",
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "heading": "",
+            "heading_preset": "h3",
+            "border_style": "all",
+            "input_style": "custom",
+            "border_width": 1,
+            "border_radius": 100,
+            "input_background_color": "#ffffff8c",
+            "input_border_color": "#15211A59",
+            "input_type_preset": "paragraph",
+            "style_class": "button-custom",
+            "custom_button_background": "#15211A",
+            "custom_button_text": "#EDF2EE",
+            "custom_button_border": "#15211A",
+            "display_type": "text",
+            "label": "S'inscrire",
+            "integrated_button": false,
+            "button_type_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": ["copy", "signup"],
+      "name": "t:names.section",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "center",
+        "gap": 24,
+        "section_width": "page-width",
+        "background_media": "none",
+        "background_color": "#8FAE96",
+        "border": "none",
+        "border_radius": 8,
+        "padding-block-start": 34,
+        "padding-block-end": 34
       }
     }
   },
   "order": [
-    "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "hero",
+    "marquee_band",
+    "concern_tiles",
+    "bestsellers",
+    "maisons",
+    "institut",
+    "newsletter"
   ]
 }

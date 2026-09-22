@@ -51,17 +51,27 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "logo_kApSuLe": {
+              "type": "logo",
+              "settings": {
+                "inverse": true,
+                "unit": "pixel",
+                "pixel_height": 40,
+                "padding-block-end": 14
+              },
+              "blocks": {}
+            },
             "text_pF6rVi": {
               "type": "text",
-              "name": "t:names.heading",
+              "name": "t:names.text",
               "settings": {
-                "text": "<h2>Join our email list</h2>",
+                "text": "<p>Concept store K-Beauty au cœur du Marais — sélection exigeante de soins coréens, diagnostic de peau sur mesure et institut Kapsule Palais.</p>",
                 "width": "100%",
-                "max_width": "normal",
+                "max_width": "narrow",
                 "alignment": "left",
-                "type_preset": "h3",
+                "type_preset": "paragraph",
                 "font": "var(--font-body--family)",
-                "font_size": "",
+                "font_size": "0.8125rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -78,23 +88,23 @@
             },
             "text_HafH7P": {
               "type": "text",
-              "name": "t:names.text",
+              "name": "t:names.heading",
               "settings": {
-                "text": "<p>Get exclusive deals and early access to new products.</p>",
+                "text": "<h3>Restez informée</h3>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "rte",
+                "type_preset": "h5",
                 "font": "var(--font-body--family)",
                 "font_size": "",
                 "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
+                "letter_spacing": "0.1em",
+                "case": "upper",
                 "wrap": "pretty",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "padding-block-start": 0,
+                "padding-block-start": 12,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
@@ -121,7 +131,7 @@
                 "custom_button_text": "{{ settings.color_palette.background }}",
                 "custom_button_border": "{{ settings.color_palette.background }}",
                 "display_type": "text",
-                "label": "Sign up",
+                "label": "S'inscrire",
                 "integrated_button": false,
                 "button_type_preset": "paragraph",
                 "padding-block-start": 0,
@@ -133,6 +143,7 @@
             }
           },
           "block_order": [
+            "logo_kApSuLe",
             "text_pF6rVi",
             "text_HafH7P",
             "email-signup_HafH7P"
