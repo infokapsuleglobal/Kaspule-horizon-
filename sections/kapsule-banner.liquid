@@ -19,7 +19,11 @@
   style="
     {% render 'spacing-style', settings: section.settings %}
     {% if has_bg and bg2 != blank %}
-      background-image: linear-gradient({{ section.settings.gradient_angle }}deg, {{ bg }} 0%, {{ bg2 }} 100%);
+      {% if section.settings.color_gradient_mid != blank %}
+        background-image: linear-gradient({{ section.settings.gradient_angle }}deg, {{ bg }} 0%, {{ section.settings.color_gradient_mid }} 45%, {{ bg2 }} 100%);
+      {% else %}
+        background-image: linear-gradient({{ section.settings.gradient_angle }}deg, {{ bg }} 0%, {{ bg2 }} 100%);
+      {% endif %}
     {% endif %}
   "
 >
@@ -61,6 +65,32 @@
           {% endif %}
         </div>
       {% endif %}
+      {% if block.type == 'hero_products' %}
+        {% liquid
+          assign hero_collection = block.settings.collection
+          if hero_collection == blank
+            assign hero_collection = collections.all
+          endif
+        %}
+        <div class="kap-hero-products" {{ block.shopify_attributes }}>
+          {% for product in hero_collection.products limit: 4 %}
+            <a href="{{ product.url }}" class="kap-hero-products__card">
+              <div class="kap-hero-products__media">
+                {{
+                  product.featured_image
+                  | image_url: width: 400
+                  | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 220px, 45vw', class: 'kap-hero-products__img'
+                }}
+                <span class="kap-hero-products__brand">{{ product.vendor }}</span>
+              </div>
+              <div class="kap-hero-products__body">
+                <span class="kap-hero-products__name">{{ product.title }}</span>
+                <span class="kap-hero-products__price">{{ product.price | money }}</span>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
     {% endfor %}
   </div>
 </div>
@@ -68,6 +98,7 @@
 {% stylesheet %}
   .kap-banner {
     overflow: hidden;
+    container-type: inline-size;
   }
 
   .kap-banner--full .kap-banner__inner {
@@ -78,7 +109,7 @@
     padding-block: clamp(26px, 4.6cqw, 70px);
   }
 
-  .kap-banner--full:has(.kap-banner__side) .kap-banner__inner {
+  .kap-banner--full:has(.kap-banner__side, .kap-hero-products) .kap-banner__inner {
     grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   }
 
@@ -105,8 +136,8 @@
   .kap-banner--full .kap-banner__heading {
     font-family: var(--font-heading--family);
     font-weight: 400;
-    font-size: clamp(30px, 6cqw, 58px);
-    line-height: 1.08;
+    font-size: clamp(30px, 6cqw, 62px);
+    line-height: 1.06;
     margin: 6px 0 0;
   }
 
@@ -145,6 +176,68 @@
     font-size: 10px;
     letter-spacing: 0.06em;
     opacity: 0.7;
+  }
+
+  .kap-hero-products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .kap-hero-products__card {
+    display: block;
+    background: var(--kap-surface, #FCFAF6);
+    border-radius: 5px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--kap-ink, #1A1714);
+  }
+
+  .kap-hero-products__media {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: var(--kap-photo-placeholder, #F1EDE5);
+    display: flex;
+    align-items: flex-end;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .kap-hero-products__img {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  .kap-hero-products__brand {
+    position: relative;
+    background: var(--kap-surface, #FCFAF6);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+  }
+
+  .kap-hero-products__body {
+    padding: 10px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .kap-hero-products__name {
+    font-family: var(--font-heading--family);
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  .kap-hero-products__price {
+    font-size: 12px;
+    color: var(--kap-ink-2, #4A443E);
   }
 
   .kap-banner--bar .kap-banner__inner {
@@ -242,6 +335,14 @@
         { "type": "image_picker", "id": "image", "label": "Image" },
         { "type": "text", "id": "caption", "label": "Caption", "default": "Édition en cours" }
       ]
+    },
+    {
+      "type": "hero_products",
+      "name": "Hero product grid (2x2, real products)",
+      "limit": 1,
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection", "info": "Leave blank to pull from all products." }
+      ]
     }
   ],
   "settings": [
@@ -270,6 +371,11 @@
       "id": "color_background",
       "label": "Background colour",
       "default": "#5A1410"
+    },
+    {
+      "type": "color",
+      "id": "color_gradient_mid",
+      "label": "Gradient middle colour (optional, 3-stop)"
     },
     {
       "type": "color",

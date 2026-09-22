@@ -41,8 +41,10 @@
   {{ block.shopify_attributes }}
 >
   {% liquid
-    assign logo_width = settings.logo_height | times: settings.logo.aspect_ratio | ceil
-    assign logo_width_mobile = settings.logo_height_mobile | times: settings.logo.aspect_ratio | ceil
+    assign fallback_logo_aspect_ratio = 1192.0 | divided_by: 352.0
+    assign logo_aspect_ratio = settings.logo.aspect_ratio | default: fallback_logo_aspect_ratio
+    assign logo_width = settings.logo_height | times: logo_aspect_ratio | ceil
+    assign logo_width_mobile = settings.logo_height_mobile | times: logo_aspect_ratio | ceil
     assign inverse_logo_width = settings.logo_height | times: inverse_logo.aspect_ratio | ceil
     assign inverse_logo_width_mobile = settings.logo_height_mobile | times: inverse_logo.aspect_ratio | ceil
     assign logo_style = '--header-logo-image-width: ' | append: logo_width | append: 'px;' | append: '--header-logo-image-width-mobile: ' | append: logo_width_mobile | append: 'px; --header-logo-image-height: ' | append: settings.logo_height | append: 'px; --header-logo-image-height-mobile: ' | append: settings.logo_height_mobile | append: 'px;'
@@ -55,14 +57,25 @@
     {% endif %}
     data-testid="header-logo"
   >
-    {% render 'image',
-      image: settings.logo,
-      class: 'header-logo__image',
-      height: settings.logo_height,
-      alt_text_fallback: alt_text_fallback,
-      text_fallback: shop.name,
-      style: logo_style
-    %}
+    {% if settings.logo == blank %}
+      <img
+        src="{{ 'kapsule-wordmark.png' | asset_url }}"
+        alt="{{ alt_text_fallback }}"
+        class="header-logo__image"
+        style="{{ logo_style }}"
+        width="{{ logo_width }}"
+        height="{{ settings.logo_height }}"
+      >
+    {% else %}
+      {% render 'image',
+        image: settings.logo,
+        class: 'header-logo__image',
+        height: settings.logo_height,
+        alt_text_fallback: alt_text_fallback,
+        text_fallback: shop.name,
+        style: logo_style
+      %}
+    {% endif %}
   </span>
 
   {% if use_inverse_logo %}

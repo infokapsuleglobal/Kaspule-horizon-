@@ -1,0 +1,85 @@
+<div
+  class="section section--page-width spacing-style page-width"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    {% if section.settings.heading != blank %}
+      <h2 style="font-family:var(--font-heading--family);font-weight:400;font-size:clamp(22px,2.6vw,28px);margin:0">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+    {% if section.settings.handle != blank %}
+      <span style="font-size:13px;color:var(--kap-ink-3)">{{ section.settings.handle }}</span>
+    {% endif %}
+  </div>
+  <div class="kap-ugc-grid" style="margin-top:18px">
+    {% for block in section.blocks %}
+      <div class="kap-ugc-tile" style="background:{{ block.settings.tint }}" {{ block.shopify_attributes }}>
+        {% if block.settings.label != blank %}
+          <span>{{ block.settings.label }}</span>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule UGC grid",
+  "tag": "section",
+  "class": "section-wrapper",
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        { "type": "color", "id": "tint", "label": "Tint", "default": "#EFEBE1" },
+        { "type": "text", "id": "label", "label": "Placeholder label", "default": "PHOTO" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Le Marais, en ce moment" },
+    { "type": "text", "id": "handle", "label": "Handle", "default": "@kapsule.paris" },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kapsule UGC grid",
+      "category": "Kapsule",
+      "blocks": {
+        "u1": { "type": "tile", "settings": { "tint": "#F1E8EC" } },
+        "u2": { "type": "tile", "settings": { "tint": "#E9EAE2" } },
+        "u3": { "type": "tile", "settings": { "tint": "#EDE6DC" } },
+        "u4": { "type": "tile", "settings": { "tint": "#E6EDEA" } },
+        "u5": { "type": "tile", "settings": { "tint": "#F0E9E3" } },
+        "u6": { "type": "tile", "settings": { "tint": "#EFEBE1" } }
+      },
+      "block_order": ["u1", "u2", "u3", "u4", "u5", "u6"]
+    }
+  ]
+}
+{% endschema %}

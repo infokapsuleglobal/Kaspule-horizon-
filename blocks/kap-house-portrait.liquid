@@ -1,0 +1,38 @@
+{% liquid
+  assign vendor = closest.product.vendor
+  assign portrait = ''
+
+  case vendor
+    when "ZISU'C", "ZISU’C"
+      assign portrait = "Maison de soin professionnelle née en cabine, ZISU'C formule pour les esthéticiennes avant de formuler pour la salle de bain. Exosomes de Centella et de Ginseng, complexes peptidiques brevetés : chaque référence est pensée comme un protocole, et c'est cette exigence clinique qui lui vaut sa place dans nos cabines comme sur nos étagères."
+    when 'Urang'
+      assign portrait = "Urang travaille l'huile végétale pressée à froid comme un parfumeur travaille l'absolu : peu d'ingrédients, tous identifiables, tous justifiés. Rose de Damas distillée, camomille bleue, centella — des formules courtes, certifiées naturelles, conçues pour les peaux que la cosmétique conventionnelle irrite."
+    when 'VT Cosmetics'
+      assign portrait = "L'une des maisons les plus suivies de Séoul, VT Cosmetics doit sa réputation à sa capacité à rendre accessible une recherche de pointe — le complexe R5, les capsules de PDRN — sans jamais diluer les concentrations."
+    when 'Mixsoon'
+      assign portrait = "Le minimalisme érigé en méthode : un ingrédient, une formule. Mixsoon retire plutôt qu'elle n'ajoute, et ses mono-actifs — soja fermenté, acide hyaluronique multi-poids — sont devenus la porte d'entrée de milliers de routines coréennes."
+    when 'Tocobo'
+      assign portrait = "Tocobo soigne les gestes que l'on néglige : les lèvres, la barrière lipidique, la protection quotidienne. Des textures fondantes, une signature discrète, une efficacité qui ne s'annonce pas."
+    when "d'Alba", "d’Alba"
+      assign portrait = "Maison de la truffe blanche, d'Alba a inventé le sérum en spray et l'a imposé comme un geste à part entière. Des soins nutritifs, portés par une signature italienne rare dans la cosmétique coréenne."
+    when 'Glash'
+      assign portrait = "Glash incarne le maquillage coréen contemporain : cils magnétiques repensés, textures fondantes, finis lumineux pensés pour la lumière naturelle plutôt que pour le flash."
+    when 'rom&nd', 'Rom&nd', 'ROM&ND'
+      assign portrait = "Phénomène de la scène beauté séoulite, rom&nd construit des teintes que l'on reconnaît au premier coup d'œil — baumes teintés fondants, palettes aux harmonies inattendues, jamais criardes."
+    else
+      assign portrait = "Une maison coréenne sélectionnée par Kapsule pour la noblesse de ses actifs et la constance de ses formules — disponible dans notre écrin du Marais comme sur cet e-shop."
+  endcase
+%}
+
+<div class="kap-house" {{ block.shopify_attributes }}>
+  <span class="kap-house__kicker">LA MAISON</span>
+  <h2 class="kap-house__title">{{ vendor }}</h2>
+  <p class="kap-house__body">{{ portrait }}</p>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule house portrait",
+  "settings": []
+}
+{% endschema %}

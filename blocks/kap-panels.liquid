@@ -1,0 +1,50 @@
+{% liquid
+  assign inci = closest.product.metafields.custom.ingredients.value
+%}
+
+<div class="kap-panels" {{ block.shopify_attributes }}>
+  <details class="kap-panel" open>
+    <summary>Les actifs</summary>
+    <div class="kap-panel__body">
+      {% if inci != blank %}
+        {{ inci }}
+      {% else %}
+        {{ block.settings.actives_fallback }}
+      {% endif %}
+    </div>
+  </details>
+  <details class="kap-panel">
+    <summary>Texture &amp; application</summary>
+    <div class="kap-panel__body">{{ block.settings.texture_text }}</div>
+  </details>
+  <details class="kap-panel">
+    <summary>Livraison &amp; retours</summary>
+    <div class="kap-panel__body">{{ block.settings.shipping_text }}</div>
+  </details>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule product panels",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "actives_fallback",
+      "label": "Fallback text when no INCI metafield is set",
+      "default": "La liste complète des ingrédients (INCI) sera affichée ici dès que le produit porte le métachamp « Ingrédients »."
+    },
+    {
+      "type": "textarea",
+      "id": "texture_text",
+      "label": "Texture & application text",
+      "default": "Appliquer matin et/ou soir sur peau propre, en légers mouvements circulaires, seul ou en superposition avec le reste de votre routine."
+    },
+    {
+      "type": "textarea",
+      "id": "shipping_text",
+      "label": "Shipping & returns text",
+      "default": "Expédié depuis notre boutique du Marais sous 24 à 48h. Livraison offerte en France dès 49€ d'achat. Retours acceptés sous 14 jours, produit non ouvert."
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,66 @@
+{% liquid
+  assign product = closest.product
+  assign same_house = collections.all.products | where: 'vendor', product.vendor
+  assign bundle_items = ''
+  assign bundle_count = 1
+  assign bundle_sum = product.price
+%}
+
+{% capture others %}
+  {% for p in same_house %}
+    {% if p.id != product.id and bundle_count < 3 %}
+      {% assign bundle_count = bundle_count | plus: 1 %}
+      {% assign bundle_sum = bundle_sum | plus: p.price %}
+      <span data-bundle-item data-variant-id="{{ p.selected_or_first_available_variant.id }}">
+        <span class="kap-bundle__item">
+          <img src="{{ p.featured_image | image_url: width: 100 }}" alt="" loading="lazy">
+          <span>
+            <span class="kap-bundle__item-name">{{ p.title }}</span><br>
+            <span class="kap-bundle__item-price">{{ p.price | money }}</span>
+          </span>
+        </span>
+      </span>
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+
+{% if bundle_count > 1 %}
+  {% assign bundle_discounted = bundle_sum | times: 0.9 %}
+  <div class="kap-bundle" {{ block.shopify_attributes }}>
+    <p class="kap-bundle__title">Complétez votre routine — -10% sur le trio</p>
+    <div class="kap-bundle__items">
+      <span class="kap-bundle__item">
+        <img src="{{ product.featured_image | image_url: width: 100 }}" alt="" loading="lazy">
+        <span>
+          <span class="kap-bundle__item-name">{{ product.title }}</span><br>
+          <span class="kap-bundle__item-price">{{ product.price | money }}</span>
+        </span>
+      </span>
+      {{ others }}
+    </div>
+    <div class="kap-bundle__foot">
+      <span class="kap-bundle__total">
+        Total de la routine : <s>{{ bundle_sum | money }}</s> <strong>{{ bundle_discounted | money }}</strong>
+      </span>
+      <button
+        type="button"
+        class="kap-btn kap-btn--sm"
+        data-kap-bundle-add
+        data-main-variant-id="{{ product.selected_or_first_available_variant.id }}"
+      >
+        Ajouter la routine
+      </button>
+    </div>
+    <p style="font-size:11px;color:var(--kap-ink-3);margin-top:10px">
+      Les 3 produits sont ajoutés au panier à leur prix courant. Pour que la remise de 10% s'applique réellement au paiement, configurez une réduction automatique dans Shopify Admin → Réductions.
+    </p>
+  </div>
+  <script src="{{ 'kap-bundle.js' | asset_url }}" type="module" defer></script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Kapsule same-house bundle",
+  "settings": []
+}
+{% endschema %}

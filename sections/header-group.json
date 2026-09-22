@@ -2,10 +2,6 @@
   "type": "header",
   "name": "t:names.header",
   "sections": {
-    "kap_rainbow_top": {
-      "type": "kapsule-rainbow-bar",
-      "settings": {}
-    },
     "header_section": {
       "type": "header",
       "blocks": {
@@ -66,5 +62,5 @@
       }
     }
   },
-  "order": ["kap_rainbow_top", "header_section"]
+  "order": ["header_section"]
 }

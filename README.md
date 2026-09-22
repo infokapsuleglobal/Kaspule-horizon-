@@ -1,68 +1,135 @@
 # Kapsule — built on Shopify Horizon
 
-This theme is [Shopify Horizon](https://github.com/Shopify/horizon) with a Kapsule
-brand layer on top: colours, typography, a recreated logo mark, and a set of
-bespoke `kapsule-*` sections used to reproduce the Kapsule concept-store design
-(hero banners, the meander pattern band, quote block, info grid, image mosaic,
-list rows, and the media + contact-card panel). Everything else — header, footer,
-product/collection pages, cart, search — is stock Horizon, only reskinned via
-`config/settings_data.json` and `snippets/kapsule-overrides.liquid`.
+This theme is [Shopify Horizon](https://github.com/Shopify/horizon) rebuilt to
+match the Kapsule handoff spec (see the original `README.md` you supplied for
+the full design reference) — real Shopify products, native cart/checkout,
+filtering and product recommendations wherever Horizon already does the job,
+plus a set of `kapsule-*` sections/blocks for what Horizon doesn't have out of
+the box (the greek-key band, concern tiles, maisons panel, free-shipping bar,
+house portraits, product info accordion, same-house bundle, sticky
+add-to-cart). No part of the original HTML prototype's runtime was ported —
+this is Liquid + Shopify's own data model throughout.
 
-## What's Kapsule-specific
+## Brand layer
 
-- `config/settings_data.json` — `color_palette` set to the Kapsule palette
-  (cream `#F7F4EE` / ink `#1A1714` / near-black `#141210` for the footer).
-  Every other theme colour (buttons, badges, inputs) derives from this
-  automatically via Horizon's smart-contrast system.
-- `snippets/kapsule-overrides.liquid` — loads Spectral from Google Fonts for
-  headings/accents, and holds all the bespoke component CSS. Rendered at the
-  end of `<head>` in `layout/theme.liquid` so it wins the cascade.
-- `assets/kapsule-monogram.svg`, `kapsule-wordmark.svg`, `kapsule-wordmark-footer.svg`
-  — the interlocking ribbon "K" mark, recreated as SVG (no logo image is set
-  in theme settings, so the header falls back to the shop name — styled with
-  the monogram as a `::before` icon; upload a real logo image in
-  **Theme settings → Logo** to replace it wholesale).
-- `sections/kapsule-*.liquid` — nine new sections: `kapsule-rainbow-bar`,
-  `kapsule-banner` (hero / CTA bar, flexible via blocks), `kapsule-media-card`
-  (image + info-card panel, used for both the dark contact cards and the
-  Notre Vision story rows), `kapsule-feature-cards`, `kapsule-meander-band`,
-  `kapsule-quote`, `kapsule-info-grid`, `kapsule-image-grid`, `kapsule-list-rows`.
-  Each is a normal Shopify section with its own schema — add, remove, or
-  reorder them from the theme editor like any other section.
-- `templates/index.json`, `templates/page.institut.json`,
-  `templates/page.popup.json`, `templates/page.vision.json` — pages built
-  from the sections above.
+- `config/settings_data.json` — `color_palette`: canvas `#F7F4EE` / ink
+  `#1A1714`, plus `color1`/`color2`/`color3` for Surface / Surface alt /
+  hairline. Every native Horizon colour (buttons, badges, inputs, footer)
+  derives from these automatically via Horizon's smart-contrast system.
+- `snippets/kapsule-overrides.liquid` — loads Spectral (Google Fonts) for
+  headings, sets the body font to the Helvetica Neue stack, and holds all
+  bespoke component CSS. Rendered at the end of `<head>` in
+  `layout/theme.liquid`.
+- `assets/kapsule-monogram.png`, `kapsule-wordmark.png`,
+  `kapsule-wordmark-footer.png` — your real logo files. `blocks/_header-logo.liquid`
+  is patched to use `kapsule-wordmark.png` automatically whenever no logo
+  image is set in **Theme settings → Logo**; upload a logo there to override it.
 
-## Store setup needed after installing this theme
+## Kapsule sections & blocks
 
-Theme code ships the layout and design; the following are store content and
-have to be set up once in Shopify admin:
+- `sections/kapsule-banner.liquid` — flexible hero/CTA (kicker, heading with
+  `<em>` accent support, body, 1–2 buttons, solid/2- or 3-stop gradient
+  background, optional 2×2 grid of **real products** pulled from a
+  collection). Used for the homepage hero, the Institut teaser, page heroes,
+  and the B2B CTA bar.
+- `sections/kapsule-meander-band.liquid` — the greek-key pattern band.
+- `sections/kapsule-concern-tiles.liquid`, `kapsule-maisons.liquid`,
+  `kapsule-ugc-grid.liquid` — homepage-specific blocks from the spec.
+- `sections/kapsule-media-card.liquid` — image (or colour-gradient
+  placeholder) + info panel; used for the Institut/Pop-up contact cards and,
+  with `button_style: link`, for the three alternating Notre Vision rows.
+- `sections/kapsule-quote.liquid`, `kapsule-image-grid.liquid`,
+  `kapsule-list-rows.liquid`, `kapsule-newsletter.liquid` (real Shopify
+  customer-signup form, tagged `newsletter`).
+- `blocks/kap-free-ship-bar.liquid` — the 49€ free-shipping progress bar
+  (PDP block + `snippets/kap-free-ship-bar-inline.liquid` in the cart
+  drawer/cart page); refreshes after add-to-cart via `assets/kap-free-ship-bar.js`.
+- `blocks/kap-house-portrait.liquid` — the "LA MAISON" paragraph, keyed off
+  `product.vendor` (see **Product data** below — this only works once vendor
+  is correct).
+- `blocks/kap-panels.liquid` — the Actifs/Texture/Livraison accordion; Actifs
+  reads the real `product.metafields.custom.ingredients` INCI metafield.
+- `blocks/kap-bundle.liquid` + `assets/kap-bundle.js` — same-house cross-sell:
+  finds up to 2 other products with the same vendor, adds all 3 to the real
+  Shopify cart in one request via `/cart/add.js`.
+- `blocks/kap-sticky-atc.liquid` — the fixed bottom bar on PDP; its button
+  just clicks the real native add-to-cart button, so it always reflects the
+  selected variant.
+- `templates/product.json` — rebuilt on Horizon's native
+  `product-information` blocks (variant-picker, buy-buttons,
+  `product-recommendations` for "À associer") with the blocks above added
+  around them, in the spec's order.
+- `templates/index.json`, `page.institut.json`, `page.popup.json`,
+  `page.vision.json` — the five pages, in spec order, all copy in French
+  (see **Translations** below).
 
-1. **Shop name** — set to "Kapsule" in **Settings → General** (used as the
-   header logo text until a real logo image is uploaded).
-2. **Languages** — add French under **Settings → Languages** so the header's
-   built-in FR/EN switcher has something to switch to.
-3. **Navigation menus** (**Content → Menus**), matching the handles already
-   wired into the header/footer:
-   - `main-menu` — Accueil (`/`), Boutique (→ a collection), Institut
-     (→ the Institut page), Pop-up (→ the Pop-up page), Notre vision
-     (→ the Notre vision page).
+## Product data — action needed
+
+Your `products_export.csv` has `Vendor` set to "Kapsule" on every row, which
+is why the prototype had to parse the real house out of the title. **The
+theme instead reads `product.vendor` directly** (for the brand pill, the
+Boutique "Marques" filter, the maisons panel links, the house portrait and
+the same-house bundle) — so it needs that field fixed in your actual catalogue.
+
+I generated `kapsule-products-corrected.csv` (sent alongside this repo) by
+applying your own stated rules — keep `status: active` only, drop zero-price
+rows and the test product, matched each of the resulting 33 products against
+the prototype's authored data — and set:
+- **Vendor** → the real house (Mixsoon, Urang, VT Cosmetics, ZISU'C, Tocobo,
+  Glash, rom&nd, d'Alba).
+- **Tags** → adds `category:<Serums|Toners|Creams|Cleansers|Masks|Makeup>`
+  and `concern:<Radiance|Firmness|Dryness|Sensitive|Redness>` tags, which
+  drive the homepage concern tiles' links and Boutique's native tag filter.
+
+**Import it in Shopify Admin → Products → Import**, matching by handle, to
+apply the fix. Until you do, brand pills/portraits/bundle fall back to the
+literal (wrong) "Kapsule" vendor.
+
+## Store setup needed in Shopify admin
+
+1. **Shop name** → "Kapsule" (Settings → General).
+2. **Re-import the corrected product CSV** (above) — do this first, everything
+   else depends on vendor/tags being right.
+3. **Languages** — add French (Settings → Languages) for the header's native
+   FR/EN switcher (`show_language` is already on). All of Horizon's own UI
+   strings (cart, search, checkout prompts, filters…) already ship translated
+   — see **Translations**.
+4. **Navigation menus** (Content → Menus):
+   - `main-menu` — Accueil, Boutique (→ All collection), Institut, Pop-up,
+     Notre vision.
    - `footer` — heading "Services" (La Boutique à Paris, L'Institut à Paris,
      Réserver un soin).
    - `footer-info` — heading "Informations" (Notre vision, Nous contacter).
    - `footer-social` — heading "Suivez-nous" (Instagram, TikTok).
-4. **Pages** (**Content → Pages**), each with **Theme template** set as noted:
-   - "Institut" → template `institut`
-   - "Pop-up" → template `popup`
-   - "Notre vision" → template `vision`
-5. **Products & collections** — the homepage bestsellers grid and the
-   Boutique page pull from real store collections/products; add these in
-   **Products** / **Collections** and point the `kap_bestsellers` section's
-   collection setting at the right one.
-6. Any `kapsule-media-card` / `kapsule-image-grid` section left without an
-   uploaded image falls back to a brand-colour gradient placeholder, so the
-   theme looks complete before real photography is added — swap in real
-   images from the theme editor whenever they're ready.
+5. **Pages**, each with **Theme template** set: "Institut" → `institut`,
+   "Pop-up" → `popup`, "Notre vision" → `vision`. A "Contact" page on
+   Horizon's stock `contact` template covers the booking/B2B request links.
+6. **Discounts** — the same-house bundle shows a −10% price but only *adds*
+   the 3 products at full price (theme code can't apply order-level
+   discounts). Create an automatic discount in Shopify Admin → Discounts if
+   you want that 10% to actually apply at checkout.
+
+## Translations
+
+Horizon ships full native French (`locales/fr.json`) for all of its own UI
+already — nothing to do there. All Kapsule-specific **editorial copy**
+(headings, body text, buttons) lives in section/block settings authored in
+French, which makes it eligible for Shopify's built-in **Translate and
+Adapt** app once French is a published language — that's the native way to
+add the English versions, rather than a hand-rolled language switcher.
+Two exceptions that are plain Liquid, not settings, so Translate & Adapt
+can't reach them: the house portraits (`blocks/kap-house-portrait.liquid`)
+and the bundle/panels default copy — flag these if you need them bilingual
+and I'll move them into translatable settings.
+
+## Explicitly not built
+
+Per your instructions: **no reviews/star ratings** (removed on client
+instruction, not reintroduced). Also out of scope for this pass, given time —
+flag if you want them: the 3-question diagnostic quiz modal, the floating
+"Commencer le diagnostic" bubble, and UGC/house-logo images (the UGC grid and
+maisons row use placeholders/names exactly as the spec says to, pending real
+assets).
 
 ---
 

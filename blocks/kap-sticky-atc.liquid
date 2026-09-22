@@ -1,0 +1,27 @@
+{% liquid
+  assign product = closest.product
+  assign variant = product.selected_or_first_available_variant
+%}
+
+<div class="kap-sticky-atc" data-kap-sticky-atc {{ block.shopify_attributes }}>
+  <img
+    class="kap-sticky-atc__media"
+    src="{{ product.featured_image | image_url: width: 100 }}"
+    alt=""
+    loading="lazy"
+  >
+  <div class="kap-sticky-atc__info">
+    <div class="kap-sticky-atc__name">{{ product.title }}</div>
+    <div class="kap-sticky-atc__price">{{ variant.price | money }}</div>
+  </div>
+  <button type="button" class="kap-btn kap-btn--sm" data-kap-sticky-atc-button>Ajouter au panier</button>
+</div>
+
+<script src="{{ 'kap-sticky-atc.js' | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+  "name": "Kapsule sticky add-to-cart bar",
+  "settings": []
+}
+{% endschema %}

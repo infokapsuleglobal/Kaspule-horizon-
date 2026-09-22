@@ -13,8 +13,9 @@
       "settings": {
         "layout": "full",
         "color_background": "#5A1410",
+        "color_gradient_mid": "#2A1512",
         "color_gradient": "#1C1512",
-        "gradient_angle": 100,
+        "gradient_angle": 115,
         "padding-block-start": 24,
         "padding-block-end": 0
       }
@@ -28,40 +29,32 @@
         "padding-block-end": 12
       }
     },
-    "kap_info": {
-      "type": "kapsule-info-grid",
+    "kap_treatments": {
+      "type": "kapsule-list-rows",
       "blocks": {
-        "card_1": {
-          "type": "card",
-          "settings": {
-            "title": "De la technique au système",
-            "body": "Plutôt que l'intuition, une méthodologie claire — la Méthode de Soin par Suivi Intégré, affinée par plus de 20 000 cas cliniques, fondée sur la compréhension traditionnelle des méridiens et de la circulation."
-          }
+        "row_1": {
+          "type": "row",
+          "settings": { "label": "Consultation & réalignement", "meta": "60 min · 120 €" }
         },
-        "card_2": {
-          "type": "card",
-          "settings": {
-            "title": "Pourquoi commencer par le visage",
-            "body": "Tensions, teint terne, contours — souvent liés à la circulation et aux tensions du cou et des épaules. Nos soins du visage intègrent ces connexions structurelles."
-          }
+        "row_2": {
+          "type": "row",
+          "settings": { "label": "Soin visage structurel", "meta": "90 min · 180 €" }
         },
-        "card_3": {
-          "type": "card",
-          "settings": {
-            "title": "Éducation & pratique mondiale",
-            "body": "Des praticiens formés à cette méthode exercent en Corée, aux États-Unis et aux Émirats Arabes Unis, appliquant la même philosophie du soin structurel."
-          }
+        "row_3": {
+          "type": "row",
+          "settings": { "label": "Protocole PLS — cure", "meta": "4 × 60 min · 620 €" }
         },
-        "card_4": {
-          "type": "card",
-          "settings": {
-            "title": "Une expérience sur mesure",
-            "body": "Chaque visite commence par une consultation personnalisée — réalignement, circulation et restauration structurelle, jamais la simple détente."
-          }
+        "row_4": {
+          "type": "row",
+          "settings": { "label": "Rituel Kapsule Signature", "meta": "120 min · 240 €" }
         }
       },
-      "block_order": ["card_1", "card_2", "card_3", "card_4"],
-      "settings": { "padding-block-start": 12, "padding-block-end": 24 }
+      "block_order": ["row_1", "row_2", "row_3", "row_4"],
+      "settings": {
+        "heading": "Nos soins",
+        "padding-block-start": 24,
+        "padding-block-end": 8
+      }
     },
     "kap_meander": {
       "type": "kapsule-meander-band",
@@ -75,14 +68,17 @@
       "type": "kapsule-media-card",
       "settings": {
         "media_position": "left",
+        "media_color_1": "#5A1410",
+        "media_color_2": "#1C1512",
         "panel_color": "#141210",
         "panel_title": "Kapsule Palais",
-        "panel_lines": "10 Rue Charles-François Dupuis, 75003 Paris\nMardi au Dimanche — 11h à 20h",
+        "panel_lines": "Mardi au Dimanche — 11h à 20h",
         "button_label": "Réserver un soin",
+        "button_link": "shopify://pages/contact",
         "padding-block-start": 44,
         "padding-block-end": 56
       }
     }
   },
-  "order": ["kap_hero", "kap_quote", "kap_info", "kap_meander", "kap_contact"]
+  "order": ["kap_hero", "kap_quote", "kap_treatments", "kap_meander", "kap_contact"]
 }

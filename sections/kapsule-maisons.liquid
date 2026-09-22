@@ -1,0 +1,77 @@
+<div
+  class="section section--page-width spacing-style page-width"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="kap-maisons">
+    {% if section.settings.kicker != blank %}
+      <div class="kap-maisons__kicker">{{ section.settings.kicker }}</div>
+    {% endif %}
+    <div class="kap-maisons__row">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>{{ block.settings.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule maisons",
+  "tag": "section",
+  "class": "section-wrapper",
+  "blocks": [
+    {
+      "type": "house",
+      "name": "House",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Urang" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "LES MAISONS DE LA SÉLECTION" },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kapsule maisons",
+      "category": "Kapsule",
+      "blocks": {
+        "h1": { "type": "house", "settings": { "name": "ZISU'C" } },
+        "h2": { "type": "house", "settings": { "name": "Urang" } },
+        "h3": { "type": "house", "settings": { "name": "VT Cosmetics" } },
+        "h4": { "type": "house", "settings": { "name": "Mixsoon" } },
+        "h5": { "type": "house", "settings": { "name": "Glash" } },
+        "h6": { "type": "house", "settings": { "name": "rom&nd" } },
+        "h7": { "type": "house", "settings": { "name": "Tocobo" } },
+        "h8": { "type": "house", "settings": { "name": "d'Alba" } }
+      },
+      "block_order": ["h1", "h2", "h3", "h4", "h5", "h6", "h7", "h8"]
+    }
+  ]
+}
+{% endschema %}

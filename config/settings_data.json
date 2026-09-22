@@ -79,9 +79,9 @@
     "color_palette": {
       "background": "#F7F4EE",
       "foreground": "#1A1714",
-      "color1": "#141210",
-      "color2": "#EDE9E1",
-      "color3": "#D9D2C4"
+      "color1": "#FCFAF6",
+      "color2": "#EFEBE1",
+      "color3": "#EAE4D8"
     }
   },
   "presets": {
@@ -155,9 +155,9 @@
       "color_palette": {
         "background": "#F7F4EE",
         "foreground": "#1A1714",
-        "color1": "#141210",
-        "color2": "#EDE9E1",
-        "color3": "#D9D2C4"
+        "color1": "#FCFAF6",
+        "color2": "#EFEBE1",
+        "color3": "#EAE4D8"
       }
     }
   }

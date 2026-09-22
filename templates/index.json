@@ -11,64 +11,29 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Le pont entre l'élégance parisienne et l'avant-garde coréenne — soin, rituel et style, réunis au cœur du Marais.</p>"
+            "text": "<p>Le pont entre l'élégance parisienne et l'avant-garde coréenne — une curation exigeante de maisons coréennes, au cœur du Marais.</p>"
           }
         },
         "button": {
           "type": "button",
           "settings": { "label": "Découvrir la sélection", "link": "shopify://collections/all", "style": "solid" }
         },
-        "side": {
-          "type": "side_panel",
-          "settings": { "caption": "Édition en cours" }
+        "button2": {
+          "type": "button",
+          "settings": { "label": "Trouver ma routine", "link": "shopify://collections/all", "style": "outline" }
+        },
+        "products": {
+          "type": "hero_products",
+          "settings": { "collection": "" }
         }
       },
-      "block_order": ["kicker", "heading", "text", "button", "side"],
+      "block_order": ["kicker", "heading", "text", "button", "button2", "products"],
       "settings": {
         "layout": "full",
         "color_background": "#5A1410",
+        "color_gradient_mid": "#3A1310",
         "color_gradient": "#1C1512",
         "gradient_angle": 105,
-        "padding-block-start": 24,
-        "padding-block-end": 0
-      }
-    },
-    "kap_features": {
-      "type": "kapsule-feature-cards",
-      "blocks": {
-        "card_1": {
-          "type": "card",
-          "settings": {
-            "kicker": "01 — KAPSULE PALAIS",
-            "title": "L'Institut",
-            "body": "La K-Esthétique, portée par l'héritage de Jiwon Hong et sa méthode de récupération structurelle.",
-            "link_label": "Découvrir",
-            "link": "shopify://pages/institut"
-          }
-        },
-        "card_2": {
-          "type": "card",
-          "settings": {
-            "kicker": "02 — L'UNIVERS BOUTIQUE",
-            "title": "La Boutique",
-            "body": "15 maisons de cosmétiques coréennes, choisies pour la noblesse de leurs actifs.",
-            "link_label": "Explorer",
-            "link": "shopify://collections/all"
-          }
-        },
-        "card_3": {
-          "type": "card",
-          "settings": {
-            "kicker": "03 — POP-UP STORE",
-            "title": "Le Pop-up",
-            "body": "Une sélection tournante de créateurs émergents et de pièces lifestyle rares.",
-            "link_label": "Visiter",
-            "link": "shopify://pages/pop-up"
-          }
-        }
-      },
-      "block_order": ["card_1", "card_2", "card_3"],
-      "settings": {
         "padding-block-start": 24,
         "padding-block-end": 0
       }
@@ -76,8 +41,65 @@
     "kap_meander": {
       "type": "kapsule-meander-band",
       "settings": {
-        "text": "Le soin, le rituel et le style — l'excellence coréenne",
+        "text": "Soin · Rituel · Style",
         "padding-block-start": 22,
+        "padding-block-end": 0
+      }
+    },
+    "kap_concerns": {
+      "type": "kapsule-concern-tiles",
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "label": "Éclat & teint terne",
+            "count": "19 produits",
+            "background": "#F1E8EC",
+            "link": "/collections/all?filter.p.tag=concern:Radiance"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "label": "Rides & fermeté",
+            "count": "7 produits",
+            "background": "#E9EAE2",
+            "link": "/collections/all?filter.p.tag=concern:Firmness"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "label": "Sécheresse",
+            "count": "19 produits",
+            "background": "#EDE6DC",
+            "link": "/collections/all?filter.p.tag=concern:Dryness"
+          }
+        },
+        "t4": {
+          "type": "tile",
+          "settings": {
+            "label": "Peau sensible",
+            "count": "19 produits",
+            "background": "#E6EDEA",
+            "link": "/collections/all?filter.p.tag=concern:Sensitive"
+          }
+        },
+        "t5": {
+          "type": "tile",
+          "settings": {
+            "label": "Rougeurs",
+            "count": "3 produits",
+            "background": "#F0E9E3",
+            "link": "/collections/all?filter.p.tag=concern:Redness"
+          }
+        }
+      },
+      "block_order": ["t1", "t2", "t3", "t4", "t5"],
+      "settings": {
+        "heading": "Par besoin de peau",
+        "subheading": "Trouvez en deux clics",
+        "padding-block-start": 44,
         "padding-block-end": 0
       }
     },
@@ -260,21 +282,94 @@
         "padding-block-end": 0
       }
     },
-    "kap_delivery_bar": {
+    "kap_maisons": {
+      "type": "kapsule-maisons",
+      "blocks": {
+        "h1": { "type": "house", "settings": { "name": "ZISU'C", "link": "/collections/all?filter.p.vendor=ZISU'C" } },
+        "h2": { "type": "house", "settings": { "name": "Urang", "link": "/collections/all?filter.p.vendor=Urang" } },
+        "h3": { "type": "house", "settings": { "name": "VT Cosmetics", "link": "/collections/all?filter.p.vendor=VT Cosmetics" } },
+        "h4": { "type": "house", "settings": { "name": "Mixsoon", "link": "/collections/all?filter.p.vendor=Mixsoon" } },
+        "h5": { "type": "house", "settings": { "name": "Glash", "link": "/collections/all?filter.p.vendor=Glash" } },
+        "h6": { "type": "house", "settings": { "name": "rom&nd", "link": "/collections/all?filter.p.vendor=rom&nd" } },
+        "h7": { "type": "house", "settings": { "name": "Tocobo", "link": "/collections/all?filter.p.vendor=Tocobo" } },
+        "h8": { "type": "house", "settings": { "name": "d'Alba", "link": "/collections/all?filter.p.vendor=d'Alba" } }
+      },
+      "block_order": ["h1", "h2", "h3", "h4", "h5", "h6", "h7", "h8"],
+      "settings": {
+        "kicker": "LES MAISONS DE LA SÉLECTION",
+        "padding-block-start": 44,
+        "padding-block-end": 0
+      }
+    },
+    "kap_institut_teaser": {
       "type": "kapsule-banner",
       "blocks": {
-        "text": { "type": "text", "settings": { "text": "<p>Livraison offerte en France dès 49€ d'achat</p>" } },
-        "button": { "type": "button", "settings": { "label": "En savoir plus", "link": "shopify://pages/notre-vision", "style": "solid" } }
+        "heading": {
+          "type": "heading",
+          "settings": { "text": "<p>Là où la K-Beauty laisse place à la K-Esthétique</p>" }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>La méthode de Jiwon Hong, 34 ans de pratique — réalignement, circulation, restauration structurelle.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": { "label": "Réserver un soin", "link": "shopify://pages/institut", "style": "solid" }
+        }
       },
-      "block_order": ["text", "button"],
+      "block_order": ["heading", "text", "button"],
       "settings": {
-        "layout": "bar",
+        "layout": "full",
+        "color_background": "#5A1410",
+        "color_gradient_mid": "#2A1512",
+        "color_gradient": "#1C1512",
+        "gradient_angle": 115,
+        "padding-block-start": 32,
+        "padding-block-end": 0
+      }
+    },
+    "kap_ugc": {
+      "type": "kapsule-ugc-grid",
+      "blocks": {
+        "u1": { "type": "tile", "settings": { "tint": "#F1E8EC" } },
+        "u2": { "type": "tile", "settings": { "tint": "#E9EAE2" } },
+        "u3": { "type": "tile", "settings": { "tint": "#EDE6DC" } },
+        "u4": { "type": "tile", "settings": { "tint": "#E6EDEA" } },
+        "u5": { "type": "tile", "settings": { "tint": "#F0E9E3" } },
+        "u6": { "type": "tile", "settings": { "tint": "#EFEBE1" } }
+      },
+      "block_order": ["u1", "u2", "u3", "u4", "u5", "u6"],
+      "settings": {
+        "heading": "Le Marais, en ce moment",
+        "handle": "@kapsule.paris",
+        "padding-block-start": 44,
+        "padding-block-end": 0
+      }
+    },
+    "kap_newsletter": {
+      "type": "kapsule-newsletter",
+      "settings": {
+        "heading": "Les nouveautés avant tout le monde",
+        "body": "Drops, restocks et sélections du pop-up — une lettre par mois, jamais plus.",
+        "placeholder": "Votre e-mail",
+        "cta": "S'inscrire",
+        "success_label": "Merci ✓",
         "color_background": "#8FAE96",
-        "color_gradient": "",
         "padding-block-start": 44,
         "padding-block-end": 56
       }
     }
   },
-  "order": ["kap_hero", "kap_features", "kap_meander", "kap_bestsellers", "kap_delivery_bar"]
+  "order": [
+    "kap_hero",
+    "kap_meander",
+    "kap_concerns",
+    "kap_bestsellers",
+    "kap_maisons",
+    "kap_ugc",
+    "kap_institut_teaser",
+    "kap_newsletter"
+  ]
 }
